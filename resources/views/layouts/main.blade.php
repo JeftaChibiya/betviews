@@ -5,7 +5,7 @@
     @include('partials.head-content')   
 </head>
 
-<body>
+<body style="padding: 0">
 
     <div id="app">
         @include('partials.navbar')

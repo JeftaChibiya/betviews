@@ -17,29 +17,27 @@
 
     <div id="app">
         @yield('content')    
-    </div>
 
     <footer>
         <div class="columns">
             <div class="column"></div>
             <div class="column is-4">
                 <nav class="level is-mobile">
-                    <a href="/" class="level-item subtitle is-5">
+                    <a href="/" class="level-item subtitle is-size-5-desktop is-size-6-mobile">
                         <b>BetViews</b>
                     </a>      
-                    <p class="level-item subtitle is-6">
+                    <p class="level-item subtitle is-size-6-desktop is-size-6-mobile">
                         &copy; Copyright {{date('Y')}}.
                     </p>
-                    <p class="level-item subtitle is-6">
+                    <p class="level-item subtitle is-size-6-desktop is-size-6-mobile">
                         All rights reserved.
                     </p>
                 </nav>              
             </div>
             <div class="column"></div>
         </div>      
-    </footer>
-
-<br/>
+    </footer>        
+    </div>
 
 <script src="{{ mix('js/app.js') }}"></script>  
 

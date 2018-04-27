@@ -6,8 +6,8 @@
     <!--  -->
     <section class="section hero is-primary is-large">
         <div class="container has-text-centered">          
-            <p class="title is-2 lined-title"><b>Your Football Tips in Style</b></p>
-            <p class="subtitle is-4">The simplest content to consume on all devices</p>
+            <p class="title lined-title is-size-2-desktop is-size-4-mobile"><b>Your Football Tips in Style</b></p>
+            <p class="subtitle is-size-4-desktop is-size-6-mobile">The simplest content to consume on all devices</p>
         </div>
     </section>
 
@@ -21,7 +21,7 @@
     
     <br/>
     <!--  -->    
-    <div class="container">
+    <div class="container" >
         <div class="columns">
             <div class="column is-8">
                 <p class="subtitle is-4">
@@ -138,35 +138,35 @@
         <div class="columns is-mobile">
             <div class="column"></div>
             <div class="column is-8">
-                <nav class="level">
-                <div class="level-item">
+                <nav class="level is-mobile">
+                <div class="level-item has-text-centered">
                     <i class="fa fa-caret-left fa-2x"></i>                    
                 </div>
                 <div class="level-item has-text-centered">
                     <div class="notification is-dark">
                         <p class="heading">1 APR</p>                        
-                        <p class="title is-5">3 matches</p>
+                        <p class="title is-5 is-size-5-desktop is-size-6-mobile">3 matches</p>
                     </div>
                 </div>
                 <div class="level-item has-text-centered">
                     <div>
                         <p class="heading">2 APR</p>                          
-                        <p class="title is-5">5 matches</p>
+                        <p class="title is-5 is-size-5-desktop is-size-6-mobile">5 matches</p>
                     </div>
                 </div>
                 <div class="level-item has-text-centered">
                     <div>
                         <p class="heading">3 APR</p>                          
-                        <p class="title is-5">2 matches</p>
+                        <p class="title is-5 is-size-5-desktop is-size-6-mobile">2 matches</p>
                     </div>
                 </div>
                 <div class="level-item has-text-centered">
                     <div>
                         <p class="heading">4 APR</p>                          
-                        <p class="title is-5">2 matches</p>
+                        <p class="title is-5 is-size-5-desktop is-size-6-mobile">2 matches</p>
                     </div>
                 </div>
-                <div class="level-item">
+                <div class="level-item has-text-centered">
                     <i class="fa fa-caret-right fa-2x"></i>                    
                 </div>                
                 </nav>                

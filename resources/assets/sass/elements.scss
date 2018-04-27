@@ -1,5 +1,10 @@
 body{
-    font-family: $family-serif
+    font-family: $family-serif;
+}
+
+// helpers 
+.is-wide{
+    width: 100%
 }
 
 // 1. Divisions

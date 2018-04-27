@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="section is-medium">
+<div class="section is-hero is-medium">
     <div class="hero-body">
         <div class="container">
             <div class="columns">
@@ -32,7 +32,7 @@
                             </div>  
 
                             <div class="field">                                   
-                                <button class="button is-dark is-wide" type="submit">SIGN IN</button>
+                                <button class="button is-dark" type="submit">SIGN IN</button>
                             </div>   
 
                             <div class="level">

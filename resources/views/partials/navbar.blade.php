@@ -2,12 +2,12 @@
     <nav class="level is-mobile">
         <div class="level-left">
             <p class="level-item">
-                <a class="subtitle is-6" href="https://bulma.io/">
+                <a class="subtitle is-6" href="#">
                     Contact
                 </a>
             </p>
             <p class="level-item">
-                <a class="subtitle is-6" href="https://bulma.io/">
+                <a class="subtitle is-6" href="#">
                     FAQs
                 </a>
             </p>  
