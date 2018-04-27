@@ -1,0 +1,85 @@
+<div class="container">
+    <nav class="level is-mobile">
+        <div class="level-left">
+            <p class="level-item">
+                <a class="subtitle is-6" href="https://bulma.io/">
+                    Contact
+                </a>
+            </p>
+            <p class="level-item">
+                <a class="subtitle is-6" href="https://bulma.io/">
+                    FAQs
+                </a>
+            </p>  
+        </div>
+        <!-- Right side -->
+        @guest
+        <div class="level-right">
+            <p class="level-item">
+                <a class="subtitle is-6" href="register">
+                    Sign up
+                </a>
+            </p>
+            <p class="level-item">
+                <a class="subtitle is-6" href="login">
+                    Login
+                </a>
+            </p>                                             
+        </div>
+        @endguest
+        @auth
+        <div class="level-right">
+            <p class="level-item">
+                <span class="dot"></span> &nbsp;            
+                <a class="subtitle is-6" href="/user.profile">
+                    {{ ucfirst(Auth::user()->name) }}
+                </a>
+            </p> 
+            <p class="level-item">/</p>
+            <p class="level-item">
+               <a href="{{ url('/logout') }}" 
+                  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                  class="subtitle is-6">
+                    <b>Sign out</b>
+               </a> 
+               <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+               </form> 
+            </p>                                                        
+        </div>            
+        @endauth
+
+    </nav>
+</div>
+
+<nav class="navbar is-transparent">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <img src="/images/branding/3.svg"  style="width: 125px" alt="">
+            </a>
+            <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/betviews">
+                    Home
+                </a>
+            </div>
+
+            <div class="navbar-end">
+                <a class="navbar-item" href="/betviews">
+                    Tips
+                </a>
+                <a class="navbar-item" href="/login">
+                    Inplay tips
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

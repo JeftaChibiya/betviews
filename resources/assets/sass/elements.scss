@@ -1,0 +1,172 @@
+body{
+    font-family: $family-serif
+}
+
+// 1. Divisions
+.dot {
+    height: 14px;
+    width: 14px;
+    background-color: #00d1b2;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+.box {
+    box-shadow: none;
+    border-radius: 2px;
+    border: 1px solid #ddd
+}
+
+// Divisions
+.login-view,
+.register-view {
+    .section {
+        padding-top: 1.8rem
+    }
+}
+
+.footer {
+    background-color: #33334B;
+    color: white;
+    .title,
+    li>a,
+    .subtitle {
+        color: white
+    }
+}
+
+
+// Paragraphs
+// dark-blue: #1e3250
+.first_part,
+.second-part {
+    font-size: 25px
+}
+
+.second-part {
+    color: #FFD727
+}
+.level {
+    padding-top: .5rem;
+    padding-bottom: .5rem
+}
+
+.navbar {
+    /* #417690 */
+    background-color: #262626;
+    min-height: 3.25rem;
+    position: relative;
+}
+
+.lined-title {
+    margin: 0 0 1em;
+    line-height: 2em;
+    position: relative;
+    overflow: hidden;
+}
+
+.lined-title:before,
+.lined-title:after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    margin-left: -999em;
+    height: 2px;
+    width: 998em;
+    border-top: 1px solid #ddd;
+}
+
+.lined-title:after {
+    left: auto;
+    width: 999em;
+    margin: 0 0 0 1em;
+}
+
+.navbar-item {
+    color: white
+}
+ 
+
+
+/* Accordion */
+.accordion {
+    font-size: 1rem;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.accordion-header,
+.accordion-body {
+    background: white;
+}
+
+.accordion-header {
+    padding: 1.5em 1.5em;
+    background-color: #1e3250;
+    text-transform: uppercase;
+    color: white;
+    cursor: pointer;
+    font-size: .8em;
+    letter-spacing: .1em;
+    transition: all .3s;
+}
+
+.accordion-header:hover {
+    background: #2D3D99;
+    position: relative;
+    z-index: 5;
+}
+
+.accordion-body {
+    background: #fcfcfc;
+    color: #3f3c3c;
+    display: none;
+}
+
+.accordion-body__contents {
+    padding: 1.5em 1.5em;
+    font-size: .85em;
+}
+
+.accordion__item.active:last-child .accordion-header {
+    border-radius: none;
+}
+
+.accordion:first-child>.accordion__item>.accordion-header {
+    border-bottom: 1px solid transparent;
+}
+
+.accordion__item>.accordion-header:after {
+    content: "\f107";
+    font-family: "FontAwesome";
+    font-size: 1.6em;
+    float: right;
+    position: relative;
+    top: -2px;
+    transition: .3s all;
+    transform: rotate(0deg);
+}
+
+.accordion__item.active>.accordion-header:after {
+    transform: rotate(-180deg);
+}
+
+.accordion__item.active .accordion-header {
+    background: #2D3D99;
+}
+
+.accordion__item .accordion__item .accordion-header {
+    background: #f1f1f1;
+    color: black;
+}
+
+@media screen and (max-width: 1000px) {
+    body {
+        padding: 1em;
+    }
+    .accordion {
+        width: 100%;
+    }
+}
+
+
