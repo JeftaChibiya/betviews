@@ -73,7 +73,7 @@ class User extends Authenticatable
      *  Created: 29.4.18
      *  i.e. user has role of editor: $user->hasRole('editor')
      */
-    public function hasRole()
+    public function hasRole($role)
     {
         
         if(is_string($role)){

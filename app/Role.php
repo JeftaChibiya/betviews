@@ -9,14 +9,16 @@ class Role extends Model
 
     public function permissions()
     {
+        
         return $this->belongsToMany(Permission::class);
+        
     }
 
 
     // A role can grant permission
-    public function givePermission(Permission $permission)
+    public function givePermissionTo(Permission $permission)
     {
-        return $this->permissions->save($permission);
+        return $this->permissions()->save($permission);
     }    
 
 }

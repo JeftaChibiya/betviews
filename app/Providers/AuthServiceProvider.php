@@ -29,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
         /** Created: 29 Apr 2018 */
         foreach($this->getPermissions() as $permission){
             // foreach permission register a new permission instance with the laravel gate class
-            $gate->define($permission->name, function($user) use ($permission) {
+            Gate::define($permission->name, function($user) use ($permission) {
                 // see if user has proper role for the action
                 return $user->hasRole($permission->roles);
             });
