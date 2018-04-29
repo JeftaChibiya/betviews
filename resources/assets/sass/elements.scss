@@ -2,12 +2,45 @@ body{
     font-family: $family-serif;
 }
 
+/**  Media Queries **/ 
+// level
+@media screen and (max-width: 1088px) {
+    .content figure{
+        margin: 0 auto
+    }
+}
+
+@media (min-width: 733px) and (max-width: 1083px) {
+    .content figure{
+        margin: 1rem
+    }
+}
+
+// Container
+// @media screen and (min-width: 1200px) {
+//     .container {
+//         max-width: 1200px;
+//         width: 95%
+//     }
+// }
+
+
 // helpers 
 .is-wide{
     width: 100%
 }
+.margin-down{
+    margin-bottom: 1.8rem
+}
+.margin-up{
+    margin-top: 1.8rem
+}
+
 
 // 1. Divisions
+.container {
+    width: 95%
+}
 .dot {
     height: 14px;
     width: 14px;
@@ -41,6 +74,81 @@ body{
 }
 
 
+// Navigation 
+
+.slideout-menu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 230px;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    min-height: 100vh;
+    overflow-y: scroll;
+    background-color: #E8E8E8;
+    -webkit-overflow-scrolling: touch;
+    z-index: 0;
+    display: none;
+    .subtitle {
+        color: black
+    }
+    .navbar-item {
+        color: black;
+        padding: 0.5rem 0;
+        font-size: 16px
+    }
+    a.navbar-item:hover,
+    a.navbar-item.is-active,
+    a.navbar-link:hover,
+    a.navbar-link.is-active {
+        background-color: transparent;
+        color: white
+    }
+}
+
+.slideout-menu-right {
+    right: 0;
+}
+
+.slideout-panel {
+    position: relative;
+    z-index: 1;
+    // will-change: transform;
+    background-color: #FFF;
+    /* A background-color is required */
+    min-height: 100vh;
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+    overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+    display: block;
+}
+
+.panel:before {
+    content: '';
+    display: block;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.5s ease-in-out;
+}
+
+.panel-open:before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 99;
+}
+
+// end of slideout menu specs
+
+
 // Paragraphs
 // dark-blue: #1e3250
 .first_part,
@@ -51,6 +159,7 @@ body{
 .second-part {
     color: #FFD727
 }
+
 .level {
     padding-top: .5rem;
     padding-bottom: .5rem
@@ -164,14 +273,4 @@ body{
     background: #f1f1f1;
     color: black;
 }
-
-@media screen and (max-width: 1000px) {
-    body {
-        padding: 1em;
-    }
-    .accordion {
-        width: 100%;
-    }
-}
-
 

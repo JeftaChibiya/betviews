@@ -3,18 +3,24 @@
 @section('content')
 
 
-<div class="section is-hero is-medium">
+<div class="section hero is-primary" style="height: 90vh">
     <div class="hero-body">
         <div class="container">
+            <div class="margin-down has-text-centered">
+                <a href="/">
+                    <img src="/images/branding/3.svg" style="width: 125px" alt="">                
+                </a>
+            </div>
+
             <div class="columns">
                 <div class="column"></div>
-                <div class="column is-3">
-                        <p class="title is-4 has-text-centered lato white">Sign in to Betviews</p>
+                <div class="column is-3-desktop is-5-tablet">
+                        <p class="subtitle is-4 has-text-centered lato white">Welcome Back!</p>
                         
                         <form action="{{ route('login') }}" method="POST">
                             {{ csrf_field() }}                                
                             <div class="field">
-                                <input type="text" class="input" name="email" placeholder="Email">
+                                <input type="text" class="input is-medium" name="email" placeholder="Email">
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">
@@ -23,7 +29,7 @@
                                 @endif                                    
                             </div>
                             <div class="field">
-                                <input type="text" class="input" name="password" placeholder="Password">    
+                                <input type="text" class="input is-medium" name="password" placeholder="Password">    
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('password') }}</strong>

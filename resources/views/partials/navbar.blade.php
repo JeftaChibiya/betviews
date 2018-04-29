@@ -2,15 +2,10 @@
     <nav class="level is-mobile">
         <div class="level-left">
             <p class="level-item">
-                <a class="subtitle is-6" href="#">
-                    Contact
+                <a class="subtitle is-6" href="/site.support">
+                    Support
                 </a>
             </p>
-            <p class="level-item">
-                <a class="subtitle is-6" href="#">
-                    FAQs
-                </a>
-            </p>  
         </div>
         <!-- Right side -->
         @guest
@@ -58,7 +53,7 @@
             <a class="navbar-item" href="/">
                 <img src="/images/branding/3.svg"  style="width: 125px" alt="">
             </a>
-            <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+            <div class="navbar-burger burger" id="sld-menu"  data-target="navbarExampleTransparentExample">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -67,13 +62,13 @@
 
         <div id="navbarExampleTransparentExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" href="/betviews">
+                <a class="navbar-item" href="/">
                     Home
                 </a>
             </div>
 
             <div class="navbar-end">
-                <a class="navbar-item" href="/betviews">
+                <a class="navbar-item" href="/site.tips">
                     Tips
                 </a>
                 <a class="navbar-item" href="/login">

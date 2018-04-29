@@ -14,47 +14,52 @@
     <br/><br/>
 
     <div class="container">
+        <div class="margin-down">
         <p class="title is-3 has-text-centered">
             <b>Upcoming</b>
-        </p>
+        </p>            
+        </div>
     </div>
     
     <br/>
     <!--  -->    
-    <div class="container" >
+    <div class="container">
         <div class="columns">
             <div class="column is-8">
-                <p class="subtitle is-4">
-                    Tips on <b>Stoke v Man City, Sat 3pm</b>                   
-                </p>
+                <div class="card">
+                    <div class="content">
 
-                <article class="columns">
-                    <figure class="column is-5">
-                        <img src="images/features/stokevsmancity.jpg" alt=""> 
-                    </figure>
-                    <div class="column">
-                        <div class="content">
-                            <p>
-                                Man City should find it easy to beat 
-                                Stoke City, who are so close to the 
-                                bottom of the table.
-                            </p>
-                            <nav class="level is-mobile">
-                                <div class="level-left">
-                                    <a class="level-item">
-                                        Stake 1
-                                    </a>
-                                    <a class="level-item">
-                                        Stake 2
-                                    </a>
-                                    <a class="level-item">
-                                        Stake 3
-                                    </a>
-                                </div>
-                            </nav>                            
+                    <div class="columns">
+                        <div class="column is-5">
+                            <img src="images/features/stokevsmancity.jpg" width="100%" alt=""> 
                         </div>
-                    </div>
-                 </article>                
+                        
+                        <div class="column">
+                                <p class="subtitle is-5">
+                                    <b>Stoke v Man City, Sat 3pm</b> (tips)                  
+                                </p>                                
+                                <p>
+                                    Man City should find it easy to beat 
+                                    Stoke City, who are so close to the 
+                                    bottom of the table.
+                                </p>
+                                <nav class="level is-mobile">
+                                    <div class="level-left">
+                                        <a class="level-item">
+                                            Stake 1
+                                        </a>
+                                        <a class="level-item">
+                                            Stake 2
+                                        </a>
+                                        <a class="level-item">
+                                            Stake 3
+                                        </a>
+                                    </div>
+                                </nav>                            
+                        </div>
+                    </div>                         
+                    </div>                    
+                </div>               
             </div>
 
             <div class="column">

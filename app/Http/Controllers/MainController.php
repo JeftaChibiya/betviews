@@ -21,7 +21,33 @@ class MainController extends Controller
              
     	return view('site.index');
 
-    }  
+    } 
+
+
+    /** 
+     * 
+     *  Support page
+     * 
+     */
+    public function support()
+    {    	                
+             
+    	return view('site.support');
+
+    }     
+
+    
+    /** 
+     * 
+     *  Tips page
+     * 
+     */
+    public function tips()
+    {    	                
+             
+    	return view('site.tips');
+
+    }     
 
 
     /** 

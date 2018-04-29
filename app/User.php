@@ -36,6 +36,10 @@ class User extends Authenticatable
         'password', 'remember_token'
     ];
 
+    /** 
+     *  Created: 25 Apr 2018 
+     *  On email confirmation, nullify the confirmation_token field
+     */
     public function confirm()
     {
 
@@ -44,4 +48,42 @@ class User extends Authenticatable
         $this->save();
 
     }
+
+    /** 
+     *  Show what roles a user has
+     *  .e.g. want to assign role of editor to user
+     */
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }    
+
+
+    public function assignRole($role)
+    {
+
+        return $this->roles()->save(
+            Role::whereName($role)->firstOrFail()
+        );
+
+    }       
+
+
+    /**     
+     *  Created: 29.4.18
+     *  i.e. user has role of editor: $user->hasRole('editor')
+     */
+    public function hasRole()
+    {
+        
+        if(is_string($role)){
+            return $this->roles->contains('name', $role);
+        }
+        
+        // remove any items from the '$role' collection that are not available
+        return $role->intersect($this->roles);
+
+    }      
+
+
 }

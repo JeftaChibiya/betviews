@@ -5,23 +5,59 @@
     @include('partials.head-content')   
 </head>
 
-<body style="padding: 0">
+    <body>
 
-    <div id="app">
-        @include('partials.navbar')
-        @yield('content')    
-    </div>
+        <div id="app">
+            @include('partials.slideout-menu-right')
 
-<br/>
+            <main id="panel" class="slideout-panel panel">
+                @include('partials.navbar')
+                @yield('content')                 
+            </main> 
+              
+        </div>
 
-<footer class="footer"> @include('partials.footer-content') </footer>  
+        <br/>
 
+        <footer class="footer"> @include('partials.footer-content') </footer>  
 
-<script src="{{ mix('js/app.js') }}"></script>  
+        <script src="{{ mix('js/app.js') }}"></script>  
+        <script src="/js/stripe-form.js" async> </script>
+        <script src="/js/accordion.js"></script>
+        <!-- SLideout -->
+        <script>
+            window.Slideout;
 
-<script src="/js/stripe-form.js" async> </script>
+            document.querySelector('.navbar-burger').addEventListener('click', function() {
+                slideout.toggle();
+            });
 
-<script src="/js/accordion.js"></script>
+            function close(event) {
+                event.preventDefault();
+                slideout.close();
+            } 
 
-</body>
+            // slideout panel - admin
+            var slideout = new Slideout({
+                'panel': document.getElementById('panel'),
+                'menu': document.getElementById('right-side-menu'),
+                'padding': 230,
+                'tolerance': 70,
+                'side': 'right'
+            });
+
+            slideout
+                .on('beforeopen', function() {
+                this.panel.classList.add('panel-open');
+                })
+                .on('open', function() {
+                this.panel.addEventListener('click', close);
+                })
+                .on('beforeclose', function() {
+                this.panel.classList.remove('panel-open');
+                this.panel.removeEventListener('click', close);
+            });           
+        </script>         
+
+    </body>
 </html>

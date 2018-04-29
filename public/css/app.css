@@ -11515,8 +11515,8 @@ label.panel-block:hover {
   padding: 3rem 1.5rem 6rem;
 }
 
-.title.is-3 {
-  margin-bottom: 2rem;
+.title {
+  color: #585858;
 }
 
 .subtitle.is-6 {
@@ -11535,16 +11535,50 @@ label.panel-block:hover {
   background-color: #00D1A9;
 }
 
-body {
-  padding: 0;
+.content {
+  padding: 2%;
+}
+
+textarea.lined-up,
+input.is-medium {
+  background-color: white;
+  font-size: .8rem;
+  border-radius: 2px;
+  border: 1px solid #D3D3D3;
 }
 
 body {
   font-family: "Open Sans", serif;
 }
 
+/**  Media Queries **/
+
+@media screen and (max-width: 1088px) {
+  .content figure {
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 733px) and (max-width: 1083px) {
+  .content figure {
+    margin: 1rem;
+  }
+}
+
 .is-wide {
   width: 100%;
+}
+
+.margin-down {
+  margin-bottom: 1.8rem;
+}
+
+.margin-up {
+  margin-top: 1.8rem;
+}
+
+.container {
+  width: 95%;
 }
 
 .dot {
@@ -11576,6 +11610,79 @@ body {
 .footer li > a,
 .footer .subtitle {
   color: white;
+}
+
+.slideout-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 230px;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  min-height: 100vh;
+  overflow-y: scroll;
+  background-color: #E8E8E8;
+  -webkit-overflow-scrolling: touch;
+  z-index: 0;
+  display: none;
+}
+
+.slideout-menu .subtitle {
+  color: black;
+}
+
+.slideout-menu .navbar-item {
+  color: black;
+  padding: 0.5rem 0;
+  font-size: 16px;
+}
+
+.slideout-menu a.navbar-item:hover,
+.slideout-menu a.navbar-item.is-active,
+.slideout-menu a.navbar-link:hover,
+.slideout-menu a.navbar-link.is-active {
+  background-color: transparent;
+  color: white;
+}
+
+.slideout-menu-right {
+  right: 0;
+}
+
+.slideout-panel {
+  position: relative;
+  z-index: 1;
+  background-color: #FFF;
+  /* A background-color is required */
+  min-height: 100vh;
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+  overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+  display: block;
+}
+
+.panel:before {
+  content: '';
+  display: block;
+  background-color: transparent;
+  -webkit-transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.panel-open:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
 }
 
 .first_part,
@@ -11702,16 +11809,6 @@ body {
 .accordion__item .accordion__item .accordion-header {
   background: #f1f1f1;
   color: black;
-}
-
-@media screen and (max-width: 1000px) {
-  body {
-    padding: 1em;
-  }
-
-  .accordion {
-    width: 100%;
-  }
 }
 
 .navbar-laravel {

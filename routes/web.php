@@ -4,7 +4,8 @@ Auth::routes();
 
 //  Public
 Route::get('/', 'MainController@index')->name('home');
-
+Route::get('/site.support', 'MainController@support')->name('support');
+Route::get('/site.tips', 'MainController@tips')->name('site.tips');
 
 // Admin
 Route::get('admin.index', 'AdminController@index')->name('admin.index');
