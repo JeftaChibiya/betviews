@@ -20,6 +20,7 @@ class CreateRolesTables extends Migration
             $table->string('label')->nullable();
             $table->timestamps();           
         });
+        
         Schema::create('permissions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name'); // can-edit-tip
