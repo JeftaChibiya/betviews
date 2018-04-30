@@ -11713,21 +11713,29 @@ body {
   overflow: hidden;
 }
 
-.lined-title:before,
-.lined-title:after {
-  content: " ";
-  position: absolute;
-  top: 50%;
-  margin-left: -999em;
-  height: 2px;
-  width: 998em;
-  border-top: 1px solid #ddd;
+@media screen and (max-width: 320px) {
+  .lined-title {
+    font-size: 1rem;
+  }
 }
 
-.lined-title:after {
-  left: auto;
-  width: 999em;
-  margin: 0 0 0 1em;
+@media (min-width: 733px) and (max-width: 1083px) {
+  .lined-title:before,
+  .lined-title:after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    margin-left: -999em;
+    height: 2px;
+    width: 998em;
+    border-top: 1px solid #ddd;
+  }
+
+  .lined-title:after {
+    left: auto;
+    width: 999em;
+    margin: 0 0 0 1em;
+  }
 }
 
 .navbar-item {
