@@ -11,12 +11,12 @@
         @guest
         <div class="level-right">
             <p class="level-item">
-                <a class="subtitle is-6" href="register">
+                <a class="subtitle is-6 has-text-right" href="register">
                     Sign up
                 </a>
             </p>
             <p class="level-item">
-                <a class="subtitle is-6" href="login">
+                <a class="subtitle is-6 has-text-right" href="login">
                     Login
                 </a>
             </p>                                             
@@ -61,11 +61,6 @@
         </div>
 
         <div id="navbarExampleTransparentExample" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="/">
-                    Home
-                </a>
-            </div>
 
             <div class="navbar-end">
                 <a class="navbar-item" href="/site.tips">

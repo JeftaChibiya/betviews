@@ -4,7 +4,7 @@
 @section('content')
    
     <!--  -->
-    <section class="section hero is-primary is-large">
+    <section class="section hero is-primary is-large betviews-intro">
         <div class="container has-text-centered">          
             <p class="title lined-title is-size-2-desktop is-size-4-mobile"><b>Your Football Tips in Style</b></p>
             <p class="subtitle is-size-4-desktop is-size-6-mobile">The simplest content to consume on all devices</p>

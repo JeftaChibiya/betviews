@@ -11713,13 +11713,13 @@ body {
   overflow: hidden;
 }
 
-@media screen and (max-width: 320px) {
-  .lined-title {
-    font-size: 1rem;
+@media screen and (max-width: 375px) {
+  .title.lined-title > b {
+    font-size: 1.2rem;
   }
 }
 
-@media (min-width: 733px) and (max-width: 1083px) {
+@media screen and (min-width: 733px) {
   .lined-title:before,
   .lined-title:after {
     content: " ";
@@ -11728,7 +11728,7 @@ body {
     margin-left: -999em;
     height: 2px;
     width: 998em;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #DD5;
   }
 
   .lined-title:after {
