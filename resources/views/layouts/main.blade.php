@@ -8,6 +8,9 @@
     <body>
 
         <div id="app">
+            <!-- <a href="http://ads2.williamhill.com/redirect.aspx?pid=191755894&bid=1487415873">
+                <img alt="" src="http://ads2.williamhill.com/renderimage.aspx?pid=191755894&bid=1487415873" border=0 style="width: 100%"></img>
+            </a>                         -->
             @include('partials.slideout-menu-right')
 
             <main id="panel" class="slideout-panel panel">

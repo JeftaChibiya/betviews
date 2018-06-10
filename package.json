@@ -24,6 +24,7 @@
     "dependencies": {
         "bower": "^1.8.4",
         "bulma": "^0.7.1",
+        "moment": "^2.22.2",
         "slideout": "^1.0.1",
         "trix": "^0.11.2"
     }

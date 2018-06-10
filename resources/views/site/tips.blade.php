@@ -6,13 +6,67 @@
         <div class="margin-down margin-up">
             <p class="title is-size-2-desktop is-size-4-mobile has-text-centered">
                 <b>Recently Uploaded</b>
-            </p>            
+            </p>                       
         </div> 
         <div class="margin-down">
             <p class="subtitle is-size-5-desktop is-size-6-mobile has-text-centered">
                 Wondering what's new on Betviews. The following posts have been recently uploaded
             </p>              
-        </div>        
+        </div>   
+
+        <br/>
+
+        @foreach($tips->chunk(4) as $set)
+        <div class="columns">
+            @foreach($set as $tip)
+                <div class="column is-3 notification" style="margin-right: 3%">
+                    <a href="/tip.show/{{ $tip->id }}">
+                        <div class="tip-banner">
+                            <figure>
+                                <img src="/images/uploads/tips/cover_images/{{ $tip->cover_image }}" style="width: 100%" alt="" />
+                            </figure>
+                        </div> 
+                        <div class="columns">
+                            <div class="column">
+                                {{ $tip->intro }}
+                            </div>
+                        </div> 
+
+                        <div class="columns">
+                            <div class="column">
+                                @isset($tip->side_one)
+                                    <b>{{ $tip->side_one }}</b>
+                                @endisset
+                                @isset($tip->side_one)
+                                    vs
+                                @endisset
+                                @isset($tip->side_two)
+                                    <b>{{ $tip->side_two }}</b>
+                                @endisset                                
+                            </div>
+                            <div class="column is-4">
+                                @isset($tip->stakes)
+                                    @foreach($tip->stakes as $stake)
+                                        {{ $stake->bet_market }}
+                                    @endforeach
+                                @endisset                                
+                            </div>
+                        </div>                         
+                        
+                        <div class="columns">
+                            <div class="column">
+                                <b>Betviews</b>
+                            </div>
+                            <div class="column has-text-centered">
+                                {{ $tip->created_at->diffForHumans() }}
+                            </div>                        
+                        </div>                     
+                    </a>                    
+                </div>
+            @endforeach
+        </div> 
+        @endforeach    
+
         
         <div class="margin-down">
             <div class="tile is-ancestor">

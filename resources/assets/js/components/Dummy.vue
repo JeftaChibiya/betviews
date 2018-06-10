@@ -1,6 +1,6 @@
 <script>
     export default {
-        props: ['oddsdata'],
+        // props: ['oddsdata'],
 
         data() {
             return {
@@ -21,22 +21,22 @@
         }, 
         
         watch: {
-            match_title: function() {
-                // Clear previously selected values
-                this.sites = [];
-                // Populate list of countries in the second dropdown
-                if (this.match_title.length > 0) {
-                    this.sites = this.oddsdata['data']['events'][this.match_title]['sites']
-                }
-            },
-            bookmaker: function() {
-                // Clear previously selected values
-                this.odds = [];
-                // Populate list of countries in the second dropdown
-                if (this.selectedBookmaker.length > 0) {
-                    this.odds = this.oddsdata['data']['events'][this.match_title]['sites'][this.selectedBookmaker]
-                }
-            }              
+            // match_title: function() {
+            //     // Clear previously selected values
+            //     this.sites = [];
+            //     // Populate list of countries in the second dropdown
+            //     if (this.match_title.length > 0) {
+            //         this.sites = this.oddsdata['data']['events'][this.match_title]['sites']
+            //     }
+            // },
+            // bookmaker: function() {
+            //     // Clear previously selected values
+            //     this.odds = [];
+            //     // Populate list of countries in the second dropdown
+            //     if (this.selectedBookmaker.length > 0) {
+            //         this.odds = this.oddsdata['data']['events'][this.match_title]['sites'][this.selectedBookmaker]
+            //     }
+            // }              
         },
 
         methods: {
@@ -48,7 +48,7 @@
             },
 
            onSubmit(){
-               this.match_time = this.oddsdata['data']['events'][this.match_title]['commence'];
+            //    this.match_time = this.oddsdata['data']['events'][this.match_title]['commence'];
                let formInput = new FormData();
                 // tip
                formInput.append('tip_intro', this.tip_intro);

@@ -12,6 +12,18 @@
     </section>
 
     <br/><br/>
+    
+    <div class="container">
+        <div class="margin-down">
+            <div class="columns">
+                <div class="column"></div>
+                <div class="column is-8">
+                </div>
+                <div class="column"></div>
+            </div>           
+        </div>
+    </div>
+
 
     <div class="container">
         <div class="margin-down">
@@ -25,7 +37,7 @@
     <!--  -->    
     <div class="container">
         <div class="columns">
-            <div class="column is-8">
+            <div class="column is-8 is-offset-2">
                 <div class="card">
                     <div class="content">
 
@@ -62,7 +74,7 @@
                 </div>               
             </div>
 
-            <div class="column">
+            <div class="column is-hidden-desktop">
 
               <div class="accordion js-accordion">
                 <div class="accordion__item js-accordion-item active">                

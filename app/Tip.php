@@ -12,10 +12,19 @@ class Tip extends Model
      * @var array
      */
     protected $fillable = [
-    
-        'intro', 'match_title', 'cover_image', 'match_date', 'match_time'
-
+        'intro',  
+        'tip_body',            
+        'match_title', 
+        'cover_image', 
+        'match_date', 
+        'match_time',
+        'side_one',
+        'side_two'
     ];  
+
+    protected $dates =[
+        'match_time'
+    ];
     
     
 

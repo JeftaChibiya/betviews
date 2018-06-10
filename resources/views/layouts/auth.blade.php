@@ -13,33 +13,46 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">  
 </head>
 
-<body>
+<body style="background-color: #00d1b2; height: 100vh">
 
     <div id="app">
-        @yield('content')    
+        <section class="section hero">
+            <div class="hero-body">
+                <div class="container">
+                    
+                    @yield('content')   
+                </div>               
+            </div>           
+        </section>   
+        
+                <footer class="auth-footer">
+                        <div class="columns is-hidden-mobile">
+                            <div class="column"></div>
+                            <div class="column is-5">
+                                <nav class="level is-mobile">
+                                    <div class="level-item">
+                                        <a href="/" class="subtitle is-size-5-desktop is-size-6-mobile">
+                                            <b>BetViews</b>
+                                        </a>                                 
+                                    </div>     
+                                    <div class="level-item">
+                                        <p class="subtitle is-size-6-desktop is-size-6-mobile">
+                                            &copy; Copyright {{date('Y')}}.
+                                        </p>
+                                    </div>
+                                    <div class="level-item">
+                                        <p class="subtitle is-size-6-desktop is-size-6-mobile">
+                                            All rights reserved.
+                                        </p>
+                                    </div>                                        
+                                </nav>                                    
+                            </div>
+                            <div class="column"></div>
+                        </div>                
+                    </footer>          
+     </div>
 
-    <footer>
-        <div class="columns">
-            <div class="column"></div>
-            <div class="column is-4">
-                <nav class="level is-mobile">
-                    <a href="/" class="level-item subtitle is-size-5-desktop is-size-6-mobile">
-                        <b>BetViews</b>
-                    </a>      
-                    <p class="level-item subtitle is-size-6-desktop is-size-6-mobile">
-                        &copy; Copyright {{date('Y')}}.
-                    </p>
-                    <p class="level-item subtitle is-size-6-desktop is-size-6-mobile">
-                        All rights reserved.
-                    </p>
-                </nav>              
-            </div>
-            <div class="column"></div>
-        </div>      
-    </footer>        
-    </div>
-
-<script src="{{ mix('js/app.js') }}"></script>  
+    <script src="{{ mix('js/app.js') }}"></script>  
 
 
 </body>

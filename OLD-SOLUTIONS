@@ -107,3 +107,47 @@ registerElements([cardNumber, cardExpiry, cardCvc], 'example3');
         </div>
     </div>                 
 </div> -->
+
+// interesting font
+'ProximaNovaLight'
+
+    <div class="container is-hidden-mobile">
+        <div class="margin-down">
+        <div class="columns">
+            <div class="column">
+                <p class="title is-3 has-text-centered">
+                    <b>Free bets</b>
+                </p>    
+                    <ul>
+                        <li>
+                            £10 Welcome Bonus: <b>Betfair</b>                                        
+                        </li>
+                        <li>
+                            £10 Welcome Bonus: <b>BetVictor</b>                                         
+                        </li>
+                        <li>
+                            £10 Welcome Bonus: <b>bet365</b>                                         
+                        </li>
+                    </ul>       
+            </div>
+            <div class="column">
+                <p class="title is-3 has-text-centered">
+                    <b>Special offers</b>
+                </p>             
+            </div>
+            <div class="column">
+                <p class="title is-3 has-text-centered">
+                    <b>Casino offers</b>
+                </p>             
+            </div>
+        </div>           
+        </div>
+    </div>
+
+// 08.06.2018
+<div class="field">
+    <label class="label">Intro</label>
+    <div class="control">
+        <input class="input" type="text" v-model="tip_intro" placeholder="Text input">
+    </div>
+</div>

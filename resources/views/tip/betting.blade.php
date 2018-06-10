@@ -2,7 +2,7 @@
 
 @section('content')
 
-<create-tip  :oddsdata="{{ json_encode($odds_data) }}"  inline-template>
+<betting-tip  :oddsdata="{{ json_encode($odds_data) }}"  inline-template>
     <section class="section">
         <p class="title is-4 has-text-centered">New Tip</p>    
         <div class="columns">
@@ -42,38 +42,40 @@
 
 
                     <div class="columns">
-                    <div class="column">
-                        <label class="label">Market</label>              
-                        <div class="select">
-                            <select v-model="bet_market">
-                                <option>Select market</option>                            
-                                <option>Head to Head</option>
-                                <option>Actual Score</option>                      
-                            </select>
-                        </div>
-                    </div>
                      <div class="column">
                         <label class="label">Bookmaker</label>              
                         <div class="select">
                             <select v-model="bookmaker" :disabled="sites.length == 0">
                                 <option value="">Select bookmaker</option>
                                 <option v-for="(site, key) in sites" :value="key"> 
-                                    @{{ key | capitalize }}                                                                    
+                                    @{{ key | capitalize }} @{{ site['odds']['h2h'][0] }} @{{ site['odds']['h2h'][1] }} @{{ site['odds']['h2h'][2] }} 
                                 </option>
                             </select>
                         </div>
                        </div>                    
+
                         <div class="column">
+                            <label class="label">Market</label>              
+                            <div class="select">
+                                <select v-model="bet_market">
+                                    <option>Select market</option>                            
+                                    <option>Head to Head</option>
+                                    <option>Actual Score</option>                      
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- <div class="column">
                             <label class="label">odds from @{{ bookmaker }} </label>
                                 <div class="select is-fullwidth">
                                     <select v-model="selectedOdds" :disabled="sites.length == 0">
                                         <option value="">Select bookmaker</option>
-                                        <option v-for="(key) in selectedOdds" :value="key"> 
-                                            @{{ [0] }}, @{{ [1] }}, @{{ [2] }}                                                                         
+                                        <option v-for="(odd,key) in selectedOdds" :value="key"> 
+                                            @{{ odd[0] }}, @{{ odd[1] }}, @{{ odd[2] }}                                                                         
                                         </option>
                                     </select>
                                 </div>
-                        </div>               
+                        </div>                -->
                     </div>
 
                     <br/>
@@ -96,6 +98,6 @@
             <div class="column"></div>
         </div>
     </section>
-</create-tip>
+</betting-tip>
 
 @endsection

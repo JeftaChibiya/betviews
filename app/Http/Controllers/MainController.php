@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tip;
 use App\User;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
@@ -30,8 +31,8 @@ class MainController extends Controller
      * 
      */
     public function support()
-    {    	                
-             
+    {    	                    
+
     	return view('site.support');
 
     }     
@@ -44,8 +45,9 @@ class MainController extends Controller
      */
     public function tips()
     {    	                
-             
-    	return view('site.tips');
+        $tips = Tip::with('stakes')->get();
+
+    	return view('site.tips', compact('tips'));
 
     }     
 

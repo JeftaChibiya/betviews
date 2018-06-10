@@ -15,11 +15,13 @@ class CreateTipsTable extends Migration
     {
         Schema::create('tips', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tip_intro');
+            $table->string('intro')->nullable(); 
+            $table->text('tip_body')->nullable();                       
             $table->string('cover_image')->nullable();             
-            $table->string('match_title')->unique();            
-            $table->string('match_date')->nullable(); 
-            $table->string('match_time')->nullable();            
+            $table->string('match_title')->unique()->nullable();;            
+            $table->string('match_time')->nullable();
+            $table->string('side_one')->nullable();
+            $table->string('side_two')->nullable();          
             $table->timestamps();
         });
     }

@@ -11602,14 +11602,23 @@ body {
 }
 
 .footer {
-  background-color: #33334B;
+  background-color: #262626;
   color: white;
 }
 
 .footer .title,
 .footer li > a,
-.footer .subtitle {
+.footer .subtitle,
+.auth-footer .title,
+.auth-footer li > a,
+.auth-footer .subtitle {
   color: white;
+}
+
+.auth-footer {
+  position: static;
+  bottom: 0;
+  width: 100%;
 }
 
 .slideout-menu {
@@ -11622,18 +11631,18 @@ body {
   padding-right: 1rem;
   min-height: 100vh;
   overflow-y: scroll;
-  background-color: #E8E8E8;
+  background-color: #141414;
   -webkit-overflow-scrolling: touch;
   z-index: 0;
   display: none;
 }
 
 .slideout-menu .subtitle {
-  color: black;
+  color: white;
 }
 
 .slideout-menu .navbar-item {
-  color: black;
+  color: white;
   padding: 0.5rem 0;
   font-size: 16px;
 }
@@ -11757,7 +11766,7 @@ body {
 
 .accordion-header {
   padding: 1.5em 1.5em;
-  background-color: #1e3250;
+  background-color: #323334;
   text-transform: uppercase;
   color: white;
   cursor: pointer;
@@ -11768,7 +11777,7 @@ body {
 }
 
 .accordion-header:hover {
-  background: #2D3D99;
+  background: #454248;
   position: relative;
   z-index: 5;
 }
@@ -11811,12 +11820,45 @@ body {
 }
 
 .accordion__item.active .accordion-header {
-  background: #2D3D99;
+  background: #454248;
 }
 
 .accordion__item .accordion__item .accordion-header {
   background: #f1f1f1;
   color: black;
+}
+
+.tip-banner {
+  color: #fff;
+  font-family: 'Fira Sans', sans-serif;
+  position: relative;
+  text-align: center;
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+}
+
+.tip-banner img {
+  width: 100%;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+}
+
+.tip-banner figcaption {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.tip-banner h1 {
+  font-size: 32px;
+}
+
+.tip-banner p {
+  font-size: 14px;
+  font-weight: 300;
+  margin-top: 0.5em;
 }
 
 .navbar-laravel {

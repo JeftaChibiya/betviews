@@ -4,6 +4,7 @@ window.Popper = require('popper.js').default;
 window.Trix = require('trix');
 window.Vue = require('vue');
 window.Slideout = require('slideout');
+window.moment = require('moment');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support

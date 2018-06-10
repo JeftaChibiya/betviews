@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class TipsController extends Controller
 {
+    
+    
+    public function dummy()
+    {
+
+    	return view('dummy');
+        
+    }
+
 
     /**
      * Display a listing of the resource.
@@ -27,12 +36,12 @@ class TipsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function bettingTip()
     {
         //GuzzleHttp\Client
         $client = new \GuzzleHttp\Client(['base_uri' => 'https://api.the-odds-api.com/']);
 
-        $result = $client->request('GET','v2/odds/?apiKey=06a522e6203aa4bdb72d1a604b20923d&sport=EPL&region=uk',[
+        $result = $client->request('GET','v2/odds/?apiKey=b1ef63d1b3614dadd6eb86b1a9b45fcb&sport=FIFA_WC_2018&region=uk',[
             'headers' => [
                 'Accept'     => 'application/json',
                 'Content-type' => 'application/json'                
@@ -40,9 +49,25 @@ class TipsController extends Controller
         ]);   
         
         // using json_decode to convert stdClass object into array
-        // $odds_data = json_decode((string) $result->getBody(), true);      
-        return view('tip.create', compact('odds_data'));        
+        $odds_data = json_decode((string) $result->getBody(), true);  
+        
+        // dd($odds_data);
+        return view('tip.betting', compact('odds_data'));        
     }
+
+
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function generalTip()
+    {         
+      
+        return view('tip.general');        
+
+    }    
 
 
 
@@ -54,11 +79,15 @@ class TipsController extends Controller
      */
     public function store(Request $request){
 
+            // create new tip
             $tip = new Tip;
 
-            $tip->tip_intro = $request->input('tip_intro');
+            $tip->intro = $request->input('tip_intro');
+            $tip->tip_body = $request->input('tip_body');
             $tip->match_title = $request->input('match_title');
-            $tip->match_time = $request->input('match_time');    
+            $tip->match_time = $request->input('match_time'); 
+            $tip->side_one = $request->input('side_one');    
+            $tip->side_two = $request->input('side_two'); 
 
             if($request->hasFile('cover_image'))
             {
@@ -68,15 +97,17 @@ class TipsController extends Controller
                 // save file in database as just the original file name 
                 $tip->cover_image = $filename;
                 // save, store file
-                $cover_image->storeAs('/tips/cover_images', $filename, 'public');			            
+                $cover_image->storeAs('/tips/cover_images', $filename, 'uploads');			            
             }
 
             $tip->save();
 
+            // create new stake
             $stake = new Stake();
-
-            $stake->stake_instance = $request->input('stake_instance');
+            
             $stake->bet_market = $request->input('bet_market');
+            $stake->bookmaker = $request->input('bookmaker');            
+            $stake->odds = $request->input('odds');
             $stake->stake_analysis = $request->input('stake_analysis');            
 
             $tip->stakes()->save($stake);
@@ -92,10 +123,14 @@ class TipsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+	public function show($id)
+	{
+		
+		$tip = Tip::find($id);
+
+		return view('tip.show', compact('tip'));
+
+	}
 
 
     /**
