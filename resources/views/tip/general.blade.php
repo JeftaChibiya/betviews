@@ -12,7 +12,7 @@
               <form method="POST" @submit.prevent="onSubmit">
                   <p class="subtitle is-4">Tip Details</p>
                     <div class="field">
-                    <label class="label">Tip introduction</label>
+                    <label class="label">Introduction</label>
                         <div class="control">
                             <input type="text" class="input" v-model="tip_intro" placeholder="3 reasons why England can win the World Cup">
                         </div>            
@@ -26,9 +26,12 @@
                     </div>
 
                     <div class="field">
-                        <div class="control">
+                        <label class="label">Content</label>                        
+                        <wysiwyg :name="tip_body" v-model="tip_body"></wysiwyg>
+
+                        <!-- <div class="control">
                             <textarea class="textarea" type="text" v-model="tip_body" placeholder="Some explanation..."></textarea>
-                        </div>
+                        </div> -->
                     </div>                    
 
                     <br/>                                       
@@ -44,7 +47,8 @@
                 </form>            
             </div>
             <div class="column"></div>
-        </div>
+            <vue-up></vue-up>              
+        </div> 
     </section>
 </general-tip>
 

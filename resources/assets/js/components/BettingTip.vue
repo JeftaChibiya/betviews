@@ -1,4 +1,6 @@
 <script>
+    import Wysiwyg from '../components/Wysiwyg.vue';
+    
     export default {
         props: ['oddsdata'],
 

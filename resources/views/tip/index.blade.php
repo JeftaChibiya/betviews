@@ -2,21 +2,28 @@
 
 @section('content')
 
+    <br/>
     <!-- tip.create -->
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <a class="column notification" href="tip.general-tip">
-                    General tip
-                    <p class="subtitle is-5">Tip without stakes included</p>
-                </a>
-                <a class="column notification" href="tip.betting-tip">
-                    Betting tip
-                    <p class="subtitle is-5">Tip with stakes included</p>                
-                </a>
-            </div>            
+    <div class="container">    
+      <div class="tile is-ancestor">
+       <div class="tile is-parent">
+            <a class="tile is-child box" href="/tip.general-tip">
+                <p class="title">General tip</p>
+                <div class="content">                    
+                    <p class="subtitle is-5">Tip without stakes included</p>                    
+                </div>
+            </a>
         </div>
-    </section>
+        <div class="tile is-parent is-6">
+            <a class="tile is-child box" href="/tip.betting-tip">
+                <p class="title"> Betting tip</p>
+                <div class="content">
+                    <p class="subtitle is-5">Tip with stakes included</p>
+                </div>
+            </a>
+        </div>
+        </div>                   
+    </div>
 
     <!-- preview and upcoming -->
     <section class="section">

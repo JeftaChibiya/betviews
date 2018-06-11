@@ -1,4 +1,6 @@
 <script>
+    import Wysiwyg from '../components/Wysiwyg.vue';
+
     export default {
 
         data() {
@@ -29,8 +31,23 @@
                formInput.append('cover_image', this.cover_image, this.cover_image.name);                                                          
                formInput.append('tip_body', this.tip_body);
 
-               axios.post('/tip.store', formInput);
+               axios.post('/tip.store', formInput)
+                  .then(
+                   this.$popup({ 
+                       message: 'Tip Added!',
+                        color           : '#ffd480',
+                        backgroundColor : 'rgba(0, 0, 0, 0.6)',
+                        delay           : 20                    
+                    }))
+                   .then(function(response) {
+                        window.location = response.data.redirect;                       
+                   });
            }            
         }             
     }
 </script>
+
+<style>
+
+</style>
+

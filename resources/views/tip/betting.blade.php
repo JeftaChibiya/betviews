@@ -82,7 +82,8 @@
 
                     <div class="field">
                         <label class="label">Stake Analysis</label>            
-                        <textarea v-model="stake_analysis" class="input textarea" placeholder="Why do you recommend this stake"></textarea>
+                        <wysiwyg :name="tip_body" v-model="tip_body"></wysiwyg>                        
+                        <!-- <textarea v-model="stake_analysis" class="input textarea" placeholder="Why do you recommend this stake"></textarea> -->
                     </div>                                        
                     
                     <div class="field is-grouped">

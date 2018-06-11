@@ -17,15 +17,17 @@
         <br/>
 
         @foreach($tips->chunk(4) as $set)
-        <div class="columns">
-            @foreach($set as $tip)
-                <div class="column is-3 notification" style="margin-right: 3%">
-                    <a href="/tip.show/{{ $tip->id }}">
+        <div class="tile is-ancestor">
+        @foreach($set as $tip)
+            <div class="tile is-parent">
+                <a class="tile is-child box" href="/tip.show/{{ $tip->id }}">
                         <div class="tip-banner">
                             <figure>
                                 <img src="/images/uploads/tips/cover_images/{{ $tip->cover_image }}" style="width: 100%" alt="" />
                             </figure>
-                        </div> 
+                        </div>                 
+                <div class="content">                 
+                    <div>
                         <div class="columns">
                             <div class="column">
                                 {{ $tip->intro }}
@@ -44,15 +46,18 @@
                                     <b>{{ $tip->side_two }}</b>
                                 @endisset                                
                             </div>
-                            <div class="column is-4">
+                        </div>                         
+                        
+                        <div class="columns">
+                            <div class="column">
                                 @isset($tip->stakes)
                                     @foreach($tip->stakes as $stake)
                                         {{ $stake->bet_market }}
                                     @endforeach
                                 @endisset                                
                             </div>
-                        </div>                         
-                        
+                        </div> 
+
                         <div class="columns">
                             <div class="column">
                                 <b>Betviews</b>
@@ -61,10 +66,12 @@
                                 {{ $tip->created_at->diffForHumans() }}
                             </div>                        
                         </div>                     
-                    </a>                    
-                </div>
+</div>                                       
+                    </div>
+                </a>
+            </div>        
             @endforeach
-        </div> 
+        </div>  
         @endforeach    
 
         

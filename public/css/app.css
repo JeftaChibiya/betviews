@@ -11547,6 +11547,10 @@ input.is-medium {
   border: 1px solid #D3D3D3;
 }
 
+.message {
+  background: none;
+}
+
 body {
   font-family: "Open Sans", serif;
 }

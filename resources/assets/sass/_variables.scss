@@ -5,6 +5,9 @@
 // 5. Add new color variables to the color map.
 @import "node_modules/bulma/sass/utilities/derived-variables";
 
+
+$column-gap: 0.75rem;
+
 // 2. Set your own initial variables
 // Update blue
 $blue: #72d0eb;

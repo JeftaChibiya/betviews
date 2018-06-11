@@ -102,17 +102,20 @@ class TipsController extends Controller
 
             $tip->save();
 
-            // create new stake
-            $stake = new Stake();
-            
-            $stake->bet_market = $request->input('bet_market');
-            $stake->bookmaker = $request->input('bookmaker');            
-            $stake->odds = $request->input('odds');
-            $stake->stake_analysis = $request->input('stake_analysis');            
+            if($request->input('bet_market'))
+            {
+                // create new stake
+                $stake = new Stake();
+                
+                $stake->bet_market = $request->input('bet_market');
+                $stake->bookmaker = $request->input('bookmaker');            
+                $stake->odds = $request->input('odds');
+                $stake->stake_analysis = $request->input('stake_analysis');            
 
-            $tip->stakes()->save($stake);
+                $tip->stakes()->save($stake);                
+            }
 
-            return redirect()->route('tip.index', [$tip]);     
+            return ['redirect' => route('tip.index', [$tip])];    
 
       }
 

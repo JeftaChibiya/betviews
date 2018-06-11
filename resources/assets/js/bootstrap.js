@@ -5,6 +5,7 @@ window.Trix = require('trix');
 window.Vue = require('vue');
 window.Slideout = require('slideout');
 window.moment = require('moment');
+import VueUp from 'vueup';
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -48,6 +49,8 @@ window.events = new Vue();
 window.flash = function (message, level = 'success') {
     window.events.$emit('flash', { message, level });
 };
+
+Vue.use(VueUp)
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
