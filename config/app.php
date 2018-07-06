@@ -161,7 +161,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,   
-        Laravel\Cashier\CashierServiceProvider::class,     
+        // Laravel\Cashier\CashierServiceProvider::class,     
     ],
 
     /*
