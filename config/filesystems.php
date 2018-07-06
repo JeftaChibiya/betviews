@@ -71,6 +71,16 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+        // created: Sat Jan 2017
+        // Provides convinient access to files from anywhere on the web
+
+        'dropbox' => [
+            'driver' => 'dropbox',
+            'app_secret' => env('DROPBOX_APP_SECRET'),
+            'token' => env('DROPBOX_TOKEN'),
+            'root'=> 'betviews/uploads/'
+        ],           
+
     ],
 
 ];

@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Tag;
 use App\Tip;
 use App\User;
-use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-
+use GuzzleHttp\Exception\GuzzleException;
+use Spatie\Dropbox\Client as DropboxClient;
 
 class MainController extends Controller
 {
@@ -46,10 +46,12 @@ class MainController extends Controller
      */
     public function tips()
     {    	                
+        $client = new DropboxClient(config('filesystems.disks.dropbox.token'));  
+
         $tags = Tag::pluck('name', 'id');
         $tips = Tip::with('stakes')->orderBy('updated_at','DESC')->get();
 
-    	return view('site.tips', compact('tips', 'tags'));
+    	return view('site.tips', compact('tips', 'tags', 'client'));
 
     } 
     

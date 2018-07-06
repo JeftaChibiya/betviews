@@ -49,7 +49,7 @@
                 FB.ui({
                     method: 'share',
                     display: 'popup',
-                    href: 'http://betviews.app/tip.show/1',
+                    href: 'http://192.241.139.145/tip.show/2',
                 }, function(response){});
                 }        
         </script>

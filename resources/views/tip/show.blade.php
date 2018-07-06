@@ -6,7 +6,7 @@
 @section('type', 'article')
 @section('title',  $tip->intro )
 @section('desc', 'So here is the thing')
-@section('img', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Abricot_march%C3%A9_de_la_casbah_d%27Alger.JPG')
+@section('img', 'http://192.241.139.145/images/uploads/tips/cover_images/' . $tip->cover_image)
 <!-- 'http://localhost:3000/images/uploads/tips/cover_images/' . $tip->cover_image) -->
 
 <!-- Page content -->
