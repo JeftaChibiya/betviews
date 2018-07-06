@@ -25,22 +25,10 @@ class TipsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        // WC2018 => FREE TX TRADER! FROM NOW UNTIL THE END OF THE WORLD CUP.
-        $appKey = "283ef421-6f23-11e8-91fa-06aae780a1ef";
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "https://jsonodds.com/api/sports");
-        curl_setopt($ch, CURLOPT_HTTPGET, 1);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'x-api-key:' . $appKey
-        ));
-        $res = curl_exec($ch);
+    {   
+        $tips = Tip::all();
 
-        $response = json_encode($res);   
-
-    	return view('tip.index');
+    	return view('tip.index', compact('tips'));
         
     }
 

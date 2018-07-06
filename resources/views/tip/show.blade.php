@@ -1,13 +1,13 @@
 @extends('layouts.main')
 
 <!-- Page metadata -->
+<!-- Correponds to FB js SDK. Check closing body tag -->
 @section('url', $url)
 @section('title', $tip->intro)
 @section('type', 'article')
 @section('title',  $tip->intro )
 @section('desc', 'So here is the thing')
 @section('img', 'http://192.241.139.145/images/uploads/tips/cover_images/' . $tip->cover_image)
-<!-- 'http://localhost:3000/images/uploads/tips/cover_images/' . $tip->cover_image) -->
 
 <!-- Page content -->
 @section('content')
@@ -55,7 +55,9 @@
                     <!-- fb share button code -->
                     <i class="fa fa-facebook-square fa-2x" id="fbShareBtn"></i>             
                 </div>
-                <div class="level-item"></div>                
+                <div class="level-item">   
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-hashtags="betviews" data-lang="en" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>                          
+                </div>                
                 <div class="level-item">
                     <b>10 Shares</b>
                 </div>

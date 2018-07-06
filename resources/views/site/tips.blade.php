@@ -25,7 +25,7 @@
             @foreach($tips->chunk(4) as $set)
             <div class="tile is-ancestor">
                 @foreach($set as $tip)
-                    <div class="tile is-parent {{ $loop->first ? 'is-4' : ''}}">
+                    <div class="tile is-parent {{ $loop->iteration == 1 ? 'is-4' : ''}}">
                         <a class="tile is-child box" href="/tip.show/{{ $tip->id }}">
                             <div class="tip-banner bg_cover" style="background-image: url('/images/uploads/tips/cover_images/{{ $tip->cover_image }}')">
                                 <!-- wavy divider -->                                                    

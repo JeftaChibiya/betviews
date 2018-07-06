@@ -44,15 +44,22 @@
 
         <script src="{{ mix('js/app.js') }}"></script> 
         
+        <!-- Below is the FB js SDK. href points to Laravel Forge, default, must alter to corresponding slug or id -->
+        <!-- Could use vue.js json parsing here -->
         <script>
                 document.getElementById('fbShareBtn').onclick = function() {
                 FB.ui({
                     method: 'share',
                     display: 'popup',
                     href: 'http://192.241.139.145/tip.show/2',
+                    hashtag: '#BetViews'
                 }, function(response){});
                 }        
         </script>
+
+
+        <!-- Twitter js  -->
+      
 
         <!-- Social share script -->
         <!-- <script>

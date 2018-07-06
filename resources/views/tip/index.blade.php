@@ -5,7 +5,7 @@
     <br/>
     <!-- tip.create -->
     <div class="container">    
-      <div class="tile is-ancestor">
+      <div class="tile is-ancestor margin-down">
        <div class="tile is-parent">
             <a class="tile is-child box" href="/tip.general-tip">
                 <p class="title">General tip</p>
@@ -22,37 +22,47 @@
                 </div>
             </a>
         </div>
-        </div>                   
-    </div>
+        </div>  
 
+        <br/>
+        
+        
     <!-- preview and upcoming -->
-    <!-- <section class="section">
-        <div class="columns">
-            <div class="column is-10 is-offset-1">
-                <p class="subtitle is-4">Matches presentations</p>
-                <small>date pagination</small>               
+    <div class="columns">
+            <div class="column is-10 is-offset-1">             
                 
-                <p class="subtitle is-4">Recent Tips</p>
-                <!-- category products -->                           
-                <!-- <div class="products-show">
-                    <div id="mygallery">
-                        <div>
-                            <img src="https://picsum.photos/" alt="">
-                        </div>
-                        <div>
-                            <img src="https://picsum.photos/" alt="">
-                        </div>
-                        <div>
-                            <img src="https://picsum.photos/" alt="">
-                        </div>                                                
-                    </div>        
+                <p class="title is-4">Recent Tips</p>
+                <!-- category products  -->
+                <div class="tips-display">
+
+                    <table class="table is-responsive">
+                        <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Title</td>
+                            <td>Created On</td>
+                            <td colspan="2">Actions</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($tips as $tip)
+                                <tr>
+                                    <td>{{ $tip->id }} </td>
+                                    <td>{{ $tip->intro }} </td>
+                                    <td>{{ $tip->created_at }} </td>
+                                    <td><a href="/tip.edit" class="is-link">Edit</a> </td>
+                                    <td><a href="/tip.destroy" class="delete is-large"></a> </td>
+                                </tr>    
+                            @endforeach                        
+                        </tbody>
+                    </table>
                 </div>
+
                 @empty($category->products)
                     <p></p>
-                @endempty  
-
-                <small>See more...</small>                
+                @endempty               
             </div>
-        </div>
-    </section> -->
+        </div>        
+    </div>
+
 @endsection
