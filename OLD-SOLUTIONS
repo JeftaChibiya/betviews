@@ -151,3 +151,351 @@ registerElements([cardNumber, cardExpiry, cardCvc], 'example3');
         <input class="input" type="text" v-model="tip_intro" placeholder="Text input">
     </div>
 </div>
+
+3 reasons why England can win the World Cup
+
+Ok, Here we go 1. Harry Kane and Raheem Sterling Harry Kane earned a better WhoScored.com rating (7.60) than any other English player in the Premier League last season, with Raheem Sterling (7.55) not far behind. 
+Only Mohamed Salah (32) scored more Premier League goals than Kane (30) 
+while Sterling was one of 14 players to register double figures for goals (18) 
+and assists (11) in Europe’s top five leagues last term. 
+It seems Gareth Southgate is going to use the duo as a pair in a 3-4-1-2 formation rather than start Sterling behind Kane as many anticipated. However, the Tottenham forward often looks to drop deeper in search of possession, which will leave the Manchester City star as the more advanced striker and while his finishing can frustrate, it’s a facet of his game that has improved. It’s a complimentary frontline involving two players on form and that’s enough to excite even the most pessimistic of England supporter. 2. Young exciting squad England have the joint-second youngest squad at the World Cup with an average age of 26. However, it’s a hugely likeable crop of players that offers experience at the back and youthful exuberance in the final third. The likes of Raheem Sterling, Marcus Rashford and Jesse Lingard offer speed and attacking versatility going forward and this fluid frontline is enough to get bums off seats. Everytime they press forward, it’s exciting to watch and this should boost fans ahead of the Russia 2018. 3. Likeable manager Gareth Southgate wasn’t the popular choice when he was announced as Sam Allardyce’s successor at the England helm, but he’s quickly won the support of the fan base. He’s grounded, likeable and handled difficult situations well and taken every bit of criticism in his stride. With the full backing of the players and the FA, there’s no reason why Southgate can’t better his predecessors’ achievements this summer.
+
+// roles / permissions tables
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateRolesTables extends Migration
+{
+    /**
+     *  Run the migrations.
+     *  Created: 29 April 2018
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('roles', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');  // superadmin, admin, editor, manager
+            $table->string('label')->nullable();
+            $table->timestamps();           
+        });
+        
+        Schema::create('permissions', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name'); // can-edit-tip
+            $table->string('label')->nullable(); // Edit Tip
+            $table->timestamps();           
+        }); 
+        
+        // pivot of role to permission
+        Schema::create('permission_role', function (Blueprint $table) {
+            $table->integer('permission_id')->unsigned();
+            $table->integer('role_id')->unsigned();   
+            // cascade on delete of permission
+            $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('cascade');
+            // cascade on delete of role            
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');            
+            $table->string('label')->nullable(); // edit tip
+            $table->primary(['permission_id','role_id']);      
+        });  
+        
+        // pivot of user to role 
+        Schema::create('role_user', function (Blueprint $table) {
+            $table->integer('role_id')->unsigned();
+            $table->integer('user_id')->unsigned();   
+            // cascade on delete of user
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            // cascade on delete of role            
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');            
+            $table->string('label')->nullable(); // edit tip    
+            $table->primary(['role_id', 'user_id']);                   
+        });          
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('roles'); 
+        Schema::dropIfExists('permissions'); 
+        Schema::dropIfExists('permission_role'); 
+        Schema::dropIfExists('role_user');        
+    }
+}
+
+// Role model
+
+    public function permissions()
+    {
+        
+        return $this->belongsToMany(Permission::class);
+        
+    }
+
+
+    // A role can grant permission
+    public function givePermissionTo(Permission $permission)
+    {
+        return $this->permissions()->save($permission);
+    }  
+
+// Permission model 
+    /**
+     *  
+     * 
+     */
+    public function roles()
+    {
+        
+        return $this->belongsToMany(Role::class);
+        
+    }
+
+// social
+https://blog.damirmiladinov.com/laravel/laravel-5.2-social-buttons.html#.WyGNV1Mvy34
+
+https://github.com/spatie/laravel-permission
+
+// AuthServiceProvider
+
+/** Created: 29 Apr 2018 */
+// foreach($this->getPermissions() as $permission){
+//     // foreach permission register a new permission instance with the laravel gate class
+//     Gate::define($permission->name, function($user) use ($permission) {
+//         // see if user has proper role for the action
+//         return $user->hasRole($permission->roles);
+//     });
+// }
+
+
+/** 
+*  
+*  Get all permissions
+*  
+*/
+protected function getPermissions()
+{
+
+return Permission::with('roles')->get();
+
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="{{ isset($title) ? str_slug($title) :  'permissionHeading' }}">
+        <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#dd-{{ isset($title) ? str_slug($title) :  'permissionHeading' }}" aria-expanded="{{ $closed or 'true' }}" aria-controls="dd-{{ isset($title) ? str_slug($title) :  'permissionHeading' }}">
+                {{ $title or 'Override Permissions' }} {!! isset($user) ? '<span class="text-danger">(' . $user->getDirectPermissions()->count() . ')</span>' : '' !!}
+            </a>
+        </h4>
+    </div>
+    
+    <div id="dd-{{ isset($title) ? str_slug($title) :  'permissionHeading' }}" class="panel-collapse collapse {{ $closed or 'in' }}" role="tabpanel" aria-labelledby="dd-{{ isset($title) ? str_slug($title) :  'permissionHeading' }}">
+        <div class="panel-body">
+            <div class="row">
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="columns">
+    <div class="column is-4 is-offset-4 card">  
+        <div class="field">
+            <p class="subtitle is-5">Pick a Subscription</p>
+            <div class="control">
+                <label class="radio">
+                    <input type="radio" name="subscription" value="v-a" v-model="view">
+                    14 day trial (Free)
+                </label>
+                <label class="radio">
+                    <input type="radio" name="subscription" value="v-b" v-model="view">
+                    Monthly £4.99
+                </label>                         
+            </div>                                   
+        </div>
+
+    <transition name="component-fade" mode="out-in">
+        <component v-bind:is="view"></component>
+    </transition>                 
+
+    </div>
+</div>  -->
+
+
+// Old registration structure: Trial & Paid account 
+
+// if customer wants trial
+if($data['subscription'] == 'v-a') {
+    return $user = User::create([            
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'password' => $data['password'],  
+        'confirmation_token' => str_limit(md5($data['email'] . str_random()), 25, ''),
+        'trial_ends_at' => now()->addDays(14),
+    ]); 
+}     
+
+// if customer submits card details
+else if($data['subscription'] == 'v-b'){
+    $user = new User;
+
+    $user->name = $data['name'];
+    $user->email = $data['email'];
+    $user->password = $data['password'];
+    $user->confirmation_token = str_limit(md5($data['email'] . str_random()), 25, '');
+    
+    $user->save();
+
+    $user->newSubscription('main', 'monthly')->create($data['stripeToken'], [
+        'email' => $user->email,
+    ]);            
+
+    return $user;
+}
+
+
+// 28.06.2018
+
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateSubscriptionsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('subscriptions', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('user_id');
+            $table->string('name');
+            $table->string('stripe_id');
+            $table->string('stripe_plan');
+            $table->integer('quantity');
+            $table->timestamp('trial_ends_at')->nullable();
+            $table->timestamp('ends_at')->nullable();            
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.e
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('subscriptions');
+    }
+}
+
+
+// Tue. 3 Jul 2018
+
+<div class="column is-hidden-desktop">
+
+    <div class="accordion js-accordion">
+    <div class="accordion__item js-accordion-item active">                
+        <div class="accordion-header js-accordion-header">Free bets</div> 
+            <div class="accordion-body js-accordion-body">
+                <div class="accordion-body__contents">
+                    <ul>
+                        <li>
+                            £10 Welcome Bonus: <b>Betfair</b>                                        
+                        </li>
+                        <li>
+                            £10 Welcome Bonus: <b>BetVictor</b>                                         
+                        </li>
+                        <li>
+                            £10 Welcome Bonus: <b>bet365</b>                                         
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    </div><!-- end of accordion item -->
+
+    <div class="accordion__item js-accordion-item">
+        <div class="accordion-header js-accordion-header">Special offers</div> 
+        <div class="accordion-body js-accordion-body">
+            <div class="accordion-body__contents">
+                ...
+            </div>
+        </div><!-- end of accordion body -->
+        </div><!-- end of accordion item -->
+
+        <div class="accordion__item js-accordion-item">
+        <div class="accordion-header js-accordion-header">Casino offers</div> 
+            <div class="accordion-body js-accordion-body">
+            <div class="accordion-body__contents">
+                ...
+            </div>
+            </div><!-- end of accordion body -->
+        </div><!-- end of accordion item -->
+        </div>
+
+</div>
+
+
+// Tue. 3 July 18 
+
+        <!-- <div class="columns">
+            <div class="column is-8 is-offset-2">
+                <div class="card">
+                    <div class="content">
+
+                    <div class="columns">
+                        <div class="column is-5">
+                            <img src="images/features/stokevsmancity.jpg" width="100%" alt=""> 
+                        </div>
+                        
+                        <div class="column">
+                                <p class="subtitle is-5">
+                                    <b>Stoke v Man City, Sat 3pm</b> (tips)                  
+                                </p>                                
+                                <p>
+                                    Man City should find it easy to beat 
+                                    Stoke City, who are so close to the 
+                                    bottom of the table.
+                                </p>
+                                <nav class="level is-mobile">
+                                    <div class="level-left">
+                                        <a class="level-item">
+                                            Stake 1
+                                        </a>
+                                        <a class="level-item">
+                                            Stake 2
+                                        </a>
+                                        <a class="level-item">
+                                            Stake 3
+                                        </a>
+                                    </div>
+                                </nav>                            
+                        </div>
+                    </div>                         
+                    </div>                    
+                </div>               
+            </div>
+        </div>   -->
+        
+
+<!-- <meta property="og:url" content="{{ $url }}" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="{{ $tip->title }}" />
+<meta property="og:description" content="{{ $tip->description }}" /> -->
+<!-- <meta property="og:image" content="{{ $tip->cover_image }}" /> -->        

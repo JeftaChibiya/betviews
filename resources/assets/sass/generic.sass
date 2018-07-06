@@ -1,13 +1,60 @@
+.title, .subtitle
+    font-family: $font_sans
+    color: #333
+
 .title
-    color: #585858
+    font-weight: 600
+.title.is-4    
+    font-size: 23px
+.auth-footer
+    .level
+        .level-item
+            .subtitle
+                color: darken(#ddd, 15%)
+
+.subtitle:not(:last-child)
+    margin-bottom: 1rem
+
 .subtitle.is-6
     font-size: 1.1rem
+    
+section.section
+    padding-top: .2rem
+
+.section.is-narrow
+    width: 70%
+    margin: 0 auto    
 
 .section.is-large
     padding: 13rem 1.5rem    
 
-.button.is-dark
-    width: 100%
+.button
+    font-family: lato
+    border-radius: 1px
+
+.button.is-large
+    font-size: 1.2rem
+    min-height: 48px
+    font-weight: 400
+
+.input:focus
+    box-shadow: none
+
+.input 
+  background-color: white
+
+.input.is-large
+    font-size: 1.2rem
+    height: 3.8rem
+
+.input, 
+.textarea
+  -wekbit-box-shadow: none 
+  box-shadow: none
+  border-radius: 2px
+  border: 1px solid #8c8c8c
+
+
 .hero.is-primary
     background-color: #00D1A9
 .content
@@ -21,3 +68,7 @@ textarea.lined-up, input.is-medium
 
 .message
   background: none
+
+.tips-feed
+    .tile.is-child.box  
+      padding: 0

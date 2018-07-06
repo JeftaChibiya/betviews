@@ -31,35 +31,7 @@ class AdminController extends Controller
 
     	return view('admin.index');
 
-    }   
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function tips()
-    {
-        
-        return view('tip.index');          
-
-    }
-
-
-    /**
-     * Manage Users
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function users()
-    {
-            
-        return view('admin.users');    
-   
     }    
-   
   
 
 }

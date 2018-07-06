@@ -16,6 +16,7 @@ class CreateTipsTable extends Migration
         Schema::create('tips', function (Blueprint $table) {
             $table->increments('id');
             $table->string('intro')->nullable(); 
+            $table->string('sub_intro')->nullable(); 
             $table->text('tip_body')->nullable();                       
             $table->string('cover_image')->nullable();             
             $table->string('match_title')->unique()->nullable();;            

@@ -1,0 +1,43 @@
+// PARAGRAPHS
+
+// dark-blue: #1e3250
+.first_part,
+.second-part {
+    font-size: 25px
+}
+
+.second-part {
+    color: #FFD727
+}
+
+.lined-title {
+    margin: 0 0 1em;
+    line-height: 2em;
+    position: relative;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 375px) {
+    .title.lined-title > b {
+        font-size: 1.2rem
+    }
+}
+
+@media screen and (min-width: 733px) {
+    .lined-title:before,
+    .lined-title:after {
+        content: " ";
+        position: absolute;
+        top: 50%;
+        margin-left: -999em;
+        height: 2px;
+        width: 998em;
+        border-top: 1px solid #DD5;
+    }
+    
+    .lined-title:after {
+        left: auto;
+        width: 999em;
+        margin: 0 0 0 1em;
+    }
+}

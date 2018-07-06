@@ -1,0 +1,33 @@
+
+// BUTTONS
+
+.custom_button{
+    background-color: rgba(#00d1b2, 0.99);
+    // good alternative: #0070ba
+    border: none;
+    color: #fff;
+    -webkit-appearance: none;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 1px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: 1rem;
+    height: 5.25em;
+    width: 100%;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    line-height: 1.5;
+    padding-bottom: calc(0.375em - 1px);
+    padding-left: calc(0.625em - 1px);
+    padding-right: calc(0.625em - 1px);
+    padding-top: calc(0.375em - 1px);
+    position: relative;
+    vertical-align: top;    
+
+    .subtitle{
+        color: #fff;
+    }
+}

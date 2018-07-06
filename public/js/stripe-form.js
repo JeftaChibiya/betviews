@@ -1,7 +1,4 @@
-// $(document).ready(checkDiv);
-$( window ).on( "load", checkDiv );
 
-function checkDiv () {
     'use strict';
   
     if($('#stripeobj').is(':visible')){
@@ -131,5 +128,4 @@ function checkDiv () {
   }
   else {
     setTimeout(checkDiv, 0); 
-}
 }

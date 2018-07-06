@@ -5,12 +5,28 @@
     @include('partials.head-content')   
 </head>
 
-    <body>
+    <body>   
+
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                appId            : '276561306041764',
+                autoLogAppEvents : true,
+                xfbml            : true,
+                version          : 'v3.0'
+                });
+            };
+
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>        
 
         <div id="app">
-            <!-- <a href="http://ads2.williamhill.com/redirect.aspx?pid=191755894&bid=1487415873">
-                <img alt="" src="http://ads2.williamhill.com/renderimage.aspx?pid=191755894&bid=1487415873" border=0 style="width: 100%"></img>
-            </a>                         -->
             @include('partials.slideout-menu-right')
 
             <main id="panel" class="slideout-panel panel">
@@ -22,11 +38,74 @@
 
         <br/>
 
-        <footer class="footer"> @include('partials.footer-content') </footer>  
+        <footer class="footer"> 
+            @include('partials.footer-content') 
+        </footer>  
 
-        <script src="{{ mix('js/app.js') }}"></script>  
-        <script src="/js/stripe-form.js" async> </script>
-        <script src="/js/accordion.js"></script>
+        <script src="{{ mix('js/app.js') }}"></script> 
+        
+        <script>
+                document.getElementById('fbShareBtn').onclick = function() {
+                FB.ui({
+                    method: 'share',
+                    display: 'popup',
+                    href: 'http://betviews.app/tip.show/1',
+                }, function(response){});
+                }        
+        </script>
+
+        <!-- Social share script -->
+        <!-- <script>
+
+            var popupSize = {
+                width: 780,
+                height: 550
+            };
+
+            $(document).on('click', '#social-buttons > a', function(e){
+
+                var
+                    verticalPos = Math.floor(($(window).width() - popupSize.width) / 2),
+                    horisontalPos = Math.floor(($(window).height() - popupSize.height) / 2);
+
+                var popup = window.open($(this).prop('href'), 'social',
+                    'width='+popupSize.width+',height='+popupSize.height+
+                    ',left='+verticalPos+',top='+horisontalPos+
+                    ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
+
+                if (popup) {
+                    popup.focus();
+                    e.preventDefault();
+                }
+
+            });
+        </script>         -->
+
+        <!-- Tip-header tip.show -->
+        <script>
+            $(document).scroll(function() {
+                flexHeader();
+            });         
+
+            function flexHeader() {
+                var y = window.scrollY;
+                if (y > 10) {
+                    $('.tip_header').addClass('small'); 
+                    // $('.progress-container').fadeIn();  
+                    // $('.progress-bar').fadeIn();                                                          
+                } else if (y < 10) {
+                    $('.tip_header').removeClass('small');
+                    // $('.progress-container').fadeOut();  
+                    // $('.progress-bar').fadeOut();                                        
+                }
+            }    
+            // with the help of: https://codepen.io/anon/pen/qKoGvb    
+        </script> 
+        
+        <!-- <script src="/js/stripe-form.js" async> </script> -->
+        <script src="/js/accordion.js"></script>     
+    
+        
         <!-- SLideout -->
         <script>
             window.Slideout;
@@ -60,7 +139,22 @@
                 this.panel.classList.remove('panel-open');
                 this.panel.removeEventListener('click', close);
             });           
-        </script>         
+        </script>  
+        
+        <!-- <script>
+            $(document).scroll(function() {
+                showProgress();
+            }); 
+
+            function showProgress() {
+                var winScroll = document.documentElement.scrollTop;
+                var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                var scrolled = (winScroll / height) * 100;
+                document.getElementById("myBar").style.width = scrolled + "%";
+            }   
+        </script> -->        
+
+        <!-- <script src="/js/paypal_button.js"></script> -->
 
     </body>
 </html>

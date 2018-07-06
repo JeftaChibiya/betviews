@@ -27,9 +27,9 @@
     </div> 
 
     <div class="columns">
-        <div class="column is-4">
+        <div class="column">
           <p class="subtitle">Subscriptions</p>
-        
+                        
                 <div class="notification is-light">
                 @isset($days_remaining)                
                     <p class="subtitle is-6">
@@ -47,6 +47,11 @@
                 @endempty
 
                 </div>              
+        </div>
+        
+        <div class="column">
+            <p class="subtitle">More</p> 
+            <a href="/admin" class="btn-link">Visit Admin site</a>           
         </div>
     </div>
 

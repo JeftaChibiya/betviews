@@ -9,9 +9,13 @@
     <br/>
 
     <ul>
-        <li><a href="/tip.index" class="navbar-item">Manage Tips</a></li>  
-        <li><a href="/user.index" class="navbar-item">Manage Users</a></li>  
-        <li><a href="/inplay-tips.show" class="navbar-item">More...</a></li>                                    
+        <li><a href="/" class="navbar-item">Go to public Site</a></li> 
+        <br/>
+        <li><a href="/tip.index" class="navbar-item">Tips & Insight</a></li> 
+        <li><a href="/tip.index" class="navbar-item">Quizzes & Specials</a></li>          
+        <li><a href="/user" class="navbar-item">Users</a></li>  
+        <li><a href="{{ route('role.index') }}" class="navbar-item">Roles</a></li> 
+        <li><a href="{{ route('permission.index') }}" class="navbar-item">Permissions</a></li>                                            
     </ul>
 
     </nav>

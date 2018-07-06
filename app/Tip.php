@@ -13,6 +13,7 @@ class Tip extends Model
      */
     protected $fillable = [
         'intro',  
+        'sub_intro',         
         'tip_body',            
         'match_title', 
         'cover_image', 
@@ -34,5 +35,12 @@ class Tip extends Model
         return $this->belongsToMany('App\Stake')->withTimestamps();
 
     } 
+
+    public function tags()
+    {
+        
+        return $this->belongsToMany(Tag::class);
+
+    }     
        
 }

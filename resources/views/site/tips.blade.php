@@ -7,75 +7,88 @@
             <p class="title is-size-2-desktop is-size-4-mobile has-text-centered">
                 <b>Recently Uploaded</b>
             </p>                       
-        </div> 
-        <div class="margin-down">
-            <p class="subtitle is-size-5-desktop is-size-6-mobile has-text-centered">
-                Wondering what's new on Betviews. The following posts have been recently uploaded
-            </p>              
-        </div>   
+        </div>          
+
+    @if(\Request::is('site.tips'))
+    <div class="tabs">
+        <ul>
+            @foreach($tags as $id => $name)
+                <li class="{{ $loop->index == 0 ? 'is-active' : ''}}"><a>{{ $name }}</a></li>
+            @endforeach
+        </ul>
+    </div> 
+    @endif    
 
         <br/>
 
-        @foreach($tips->chunk(4) as $set)
-        <div class="tile is-ancestor">
-        @foreach($set as $tip)
-            <div class="tile is-parent">
-                <a class="tile is-child box" href="/tip.show/{{ $tip->id }}">
-                        <div class="tip-banner">
-                            <figure>
-                                <img src="/images/uploads/tips/cover_images/{{ $tip->cover_image }}" style="width: 100%" alt="" />
-                            </figure>
-                        </div>                 
-                <div class="content">                 
-                    <div>
-                        <div class="columns">
-                            <div class="column">
-                                {{ $tip->intro }}
-                            </div>
-                        </div> 
+        <div class="tips-feed">
+            @foreach($tips->chunk(4) as $set)
+            <div class="tile is-ancestor">
+                @foreach($set as $tip)
+                    <div class="tile is-parent {{ $loop->first ? 'is-4' : ''}}">
+                        <a class="tile is-child box" href="/tip.show/{{ $tip->id }}">
+                            <div class="tip-banner bg_cover" style="background-image: url('/images/uploads/tips/cover_images/{{ $tip->cover_image }}')">
+                                <!-- wavy divider -->                                                    
+                                <svg id="curve" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300.9 32.1">
+                                    <title>curve-background</title>
+                                    <path class="cls-1" d="M.08,268.12a494.66,494.66,0,0,1,56,4.06C78.79,275.13,90.17,278,124,283.84c0,0,28.21,4.87,56,8.77S248,300.53,300.9,300.2L0,300.1c0-4.33.07-9.69.08-14.06Q.11,277,.08,268.12Z" transform="translate(0 -268.12)"/>
+                                </svg>                  
+                            </div>                                    
 
-                        <div class="columns">
-                            <div class="column">
-                                @isset($tip->side_one)
-                                    <b>{{ $tip->side_one }}</b>
-                                @endisset
-                                @isset($tip->side_one)
-                                    vs
-                                @endisset
-                                @isset($tip->side_two)
-                                    <b>{{ $tip->side_two }}</b>
-                                @endisset                                
-                            </div>
-                        </div>                         
-                        
-                        <div class="columns">
-                            <div class="column">
-                                @isset($tip->stakes)
-                                    @foreach($tip->stakes as $stake)
-                                        {{ $stake->bet_market }}
-                                    @endforeach
-                                @endisset                                
-                            </div>
-                        </div> 
+                        <div class="content">                                        
+                            <div>
 
-                        <div class="columns">
-                            <div class="column">
-                                <b>Betviews</b>
-                            </div>
-                            <div class="column has-text-centered">
-                                {{ $tip->created_at->diffForHumans() }}
-                            </div>                        
-                        </div>                     
-</div>                                       
-                    </div>
-                </a>
-            </div>        
-            @endforeach
-        </div>  
-        @endforeach    
+                                <div class="columns">
+                                    <div class="column">
+                                        <p class="subtitle is-4">
+                                          {{ $tip->intro }}                                            
+                                        </p>
+                                    </div>
+                                </div> 
 
+                                <div class="columns">
+                                    <div class="column">
+                                        @isset($tip->side_one)
+                                            <b>{{ $tip->side_one }}</b>
+                                        @endisset
+                                        @isset($tip->side_one)
+                                            vs
+                                        @endisset
+                                        @isset($tip->side_two)
+                                            <b>{{ $tip->side_two }}</b>
+                                        @endisset                                
+                                    </div>
+                                </div>                         
+                                
+                                <div class="columns">
+                                    <div class="column">
+                                        @isset($tip->stakes)
+                                            @foreach($tip->stakes as $stake)
+                                                {{ $stake->bet_market }}
+                                            @endforeach
+                                        @endisset                                
+                                    </div>
+                                </div> 
+
+                                <div class="columns">
+                                    <div class="column">
+                                        <b style="color: #A0A0A0">Betviews</b>
+                                    </div>
+                                    <div class="column has-text-centered">
+                                        {{ $tip->created_at->diffForHumans() }}
+                                    </div>                        
+                                </div>                     
+                            </div>                                       
+                        </div>
+                        </a>      
+                    @endforeach
+                </div>
+            </div>  
+            @endforeach    
+        </div>
         
-        <div class="margin-down">
+        
+        <!-- <div class="margin-down">
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <div class="tile is-child box">
@@ -95,7 +108,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
                     </div>
                 </div>
-            </div>    
-        </div>        
+            </div>
+        </div>         -->
     </div>
 @endsection

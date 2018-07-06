@@ -1843,45 +1843,124 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Wysiwyg_vue__ = __webpack_require__("./resources/assets/js/components/Wysiwyg.vue");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Wysiwyg_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Wysiwyg_vue__);
+var _methods;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
+
+// https://jsfiddle.net/dux6q43p/
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             // tip
             tip_intro: '',
+            subtitle: '',
             cover_image: null,
-            tip_body: ''
+            tip_body: '',
+            completed: false,
+            selected: []
         };
     },
 
 
-    watch: {},
+    computed: {},
 
-    methods: {
+    watch: {
+        selected: function selected() {
+            return this.value;
+        }
+    },
+
+    methods: (_methods = {
+        onSelected: function onSelected(value) {
+            this.$emit('input', value);
+        },
+        isSelected: function isSelected(option) {
+            return option.optionId === this.value;
+        },
         onChange: function onChange(e) {
 
             this.cover_image = e.target.files[0];
             // see more on: https://laracasts.com/series/lets-build-a-forum-with-laravel/episodes/65                
-        },
-        onSubmit: function onSubmit() {
-            var formInput = new FormData();
-
-            // tip
-            formInput.append('tip_intro', this.tip_intro);
-            formInput.append('cover_image', this.cover_image, this.cover_image.name);
-            formInput.append('tip_body', this.tip_body);
-
-            axios.post('/tip.store', formInput).then(this.$popup({
-                message: 'Tip Added!',
-                color: '#ffd480',
-                backgroundColor: 'rgba(0, 0, 0, 0.6)',
-                delay: 20
-            })).then(function (response) {
-                window.location = response.data.redirect;
-            });
         }
+    }, _defineProperty(_methods, 'onSelected', function onSelected(e) {
+
+        this.selected = e.target;
+        // see more on: https://laracasts.com/series/lets-build-a-forum-with-laravel/episodes/65                
+    }), _defineProperty(_methods, 'onSubmit', function onSubmit() {
+        var formInput = new FormData();
+
+        // tip
+        formInput.append('tip_intro', this.tip_intro);
+        formInput.append('subtitle', this.subtitle);
+        formInput.append('cover_image', this.cover_image, this.cover_image.name);
+        formInput.append('tip_body', this.tip_body);
+        formInput.append('tags', this.selected);
+
+        axios.post('/tip.store', formInput).then(this.$popup({
+            message: 'Tip Added!',
+            color: '#ffd480',
+            backgroundColor: 'rgba(0, 0, 0, 0.6)',
+            delay: 20
+        }, this.completed = true));
+        //    .then(function(response) {
+        //         window.location.href = 'http://localhost:3000/tip.index';                       
+        //    });
+    }), _methods)
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Modal.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+// import Modal from '../components/Modal';
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        var _this = this;
+
+        document.addEventListener("keydown", function (e) {
+            if (_this.show && e.keyCode == 27) {
+                _this.close();
+            }
+        });
     }
 });
 
@@ -1945,33 +2024,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/RegisterUser.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/RolesIndex.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: ['roles', 'permissions'],
+
     data: function data() {
         return {
-            view: 'v-a'
+            selectedRole: '',
+            showModal: false,
+            name: '',
+            permissions_list: []
         };
     },
 
 
-    components: {
-        'v-a': {
-            template: '<div></div>'
-        },
-        'v-b': {
-            template: '\n            <div id="stripeobj" onload="myFunction()">                  \n                <div class="cell example example3">\n                <p class="subtitle is-6 has-text-centered">Add Debit / Credit Card</p>                   \n                    <div class="fieldset">\n                        <div id="example3-card-number" class="field empty"></div>\n                        <div id="example3-card-expiry" class="field empty half-width"></div>\n                        <div id="example3-card-cvc" class="field empty half-width"></div> \n                        <input type="hidden">               \n                    </div>\n                </div>                 \n            </div>\n            '
-        }
-    },
+    watch: {},
 
     methods: {
-        onSubmit: function onSubmit() {}
-    }
+        close: function close() {
+            this.showModal = false;
+        },
+        submit: function submit() {
+            var formInput = new FormData();
 
+            formInput.append('name', this.name);
+            formInput.append('permissions', this.permissions_list);
+
+            axios.post('/role', formInput);
+        }
+    }
 });
 
 /***/ }),
@@ -6024,7 +6112,7 @@ exports.push([module.i, "\n.alert-flash {\n    position: fixed;\n    right: 25px
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2f694076\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/RegisterUser.vue":
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6e8d36f4\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Modal.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
@@ -6032,7 +6120,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    -webkit-transition: opacity .5s;\n    transition: opacity .5s;\n}\n.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {\n    opacity: 0;\n}\n.component-fade-enter-active, .component-fade-leave-active {\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.component-fade-enter, .component-fade-leave-to\n/* .component-fade-leave-active below version 2.1.8 */ {\n    opacity: 0;\n} \n\n    \n", ""]);
+exports.push([module.i, "\n.modal-mask {\n  position: fixed;\n  z-index: 9998;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, .5);\n  display: table;\n  -webkit-transition: opacity .3s ease;\n  transition: opacity .3s ease;\n}\n.modal-wrapper {\n  display: table-cell;\n  vertical-align: middle;\n}\n.modal-container {\n  width: 600px;\n  margin: 0px auto;\n  padding: 20px 30px;\n  background-color: #fff;\n  border-radius: 2px;\n  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n          box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n  -webkit-transition: all .3s ease;\n  transition: all .3s ease;\n  font-family: Helvetica, Arial, sans-serif;\n}\n.modal-header h3 {\n  margin-top: 0;\n  color: #42b983;\n}\n.modal-body {\n  margin: 20px 0;\n}\n.modal-default-button {\n  float: right;\n}\n\n/*\n * The following styles are auto-applied to elements with\n * transition=\"modal\" when their visibility is toggled\n * by Vue.js.\n *\n * You can easily play with the modal transition by editing\n * these styles.\n */\n.modal-enter {\n  opacity: 0;\n}\n.modal-leave-active {\n  opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n  -webkit-transform: scale(1.1);\n  transform: scale(1.1);\n}\t\n", ""]);
 
 // exports
 
@@ -6047,7 +6135,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54113,6 +54201,39 @@ if (false) {
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6e8d36f4\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Modal.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "modal" } }, [
+    _c("div", { staticClass: "modal-mask" }, [
+      _c("div", { staticClass: "modal-wrapper" }, [
+        _c("div", { staticClass: "modal-container" }, [
+          _c("div", { staticClass: "modal-header" }, [_vm._t("header")], 2),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-body" }, [_vm._t("body")], 2),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-footer" }, [_vm._t("footer")], 2)
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6e8d36f4", module.exports)
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-74bc836a\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Paginator.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -54321,23 +54442,23 @@ if(false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2f694076\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/RegisterUser.vue":
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6e8d36f4\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Modal.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2f694076\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/RegisterUser.vue");
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6e8d36f4\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Modal.vue");
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("2320b27b", content, false, {});
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("18c890c3", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2f694076\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RegisterUser.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2f694076\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RegisterUser.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6e8d36f4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Modal.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6e8d36f4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Modal.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -66310,13 +66431,74 @@ __webpack_require__("./resources/assets/js/bootstrap.js");
 Vue.component('dummy', __webpack_require__("./resources/assets/js/components/Dummy.vue"));
 Vue.component('betting-tip', __webpack_require__("./resources/assets/js/components/BettingTip.vue"));
 Vue.component('general-tip', __webpack_require__("./resources/assets/js/components/GeneralTip.vue"));
-Vue.component('register-user', __webpack_require__("./resources/assets/js/components/RegisterUser.vue"));
+// Vue.component('register-user', require('./components/RegisterUser.vue'));
 Vue.component('flash', __webpack_require__("./resources/assets/js/components/Flash.vue"));
 Vue.component('paginator', __webpack_require__("./resources/assets/js/components/Paginator.vue"));
 Vue.component('user-notifications', __webpack_require__("./resources/assets/js/components/UserNotifications.vue"));
 // Vue.component('avatar-form', require('./components/AvatarForm.vue'));
 Vue.component('wysiwyg', __webpack_require__("./resources/assets/js/components/Wysiwyg.vue"));
 Vue.component('show-tip', __webpack_require__("./resources/assets/js/components/ShowTip.vue"));
+Vue.component('roles-index', __webpack_require__("./resources/assets/js/components/RolesIndex.vue"));
+Vue.component('modal', __webpack_require__("./resources/assets/js/components/Modal.vue"));
+
+// Vue directive: v-select
+Vue.directive('select', {
+    twoWay: true,
+    bind: function bind(el, binding, vnode) {
+        $(el).select2().on("select2:select", function (e) {
+            // v-model looks for
+            //  - an event named "change"
+            //  - a value with property path "$event.target.value"
+            el.dispatchEvent(new Event('change', { target: e.target }));
+        });
+    }
+});
+
+Vue.component('tabs', {
+    template: '\n        <div>\n            <div class="custom_tab">\n                <ul>\n                    <li v-for="tab in tabs" :class="{ \'is-active\': tab.isActive }">\n                        <button :href="tab.href" @click="selectTab(tab)">{{ tab.name | capitalize }}</button>\n                    </li>\n                </ul>\n            </div>\n\n            <div class="tabcontent">\n                <slot></slot>\n            </div>\n        </div>\n    ',
+
+    data: function data() {
+        return { tabs: [] };
+    },
+    created: function created() {
+        this.tabs = this.$children;
+    },
+
+
+    methods: {
+        selectTab: function selectTab(selectedTab) {
+            this.tabs.forEach(function (tab) {
+                tab.isActive = tab.href == selectedTab.href;
+            });
+        }
+    }
+});
+
+Vue.component('tab', {
+    template: '\n        <div v-show="isActive"><slot></slot></div>\n    ',
+
+    props: {
+        name: { required: true },
+        selected: { default: false }
+    },
+
+    data: function data() {
+        return {
+            isActive: false
+        };
+    },
+
+
+    computed: {
+        href: function href() {
+            return '#' + this.name.toLowerCase().replace(/ /g, '-');
+        }
+    },
+
+    mounted: function mounted() {
+        this.isActive = this.selected;
+    }
+});
 
 Vue.filter('capitalize', function (value) {
     if (!value) return '';
@@ -66330,8 +66512,12 @@ Vue.filter('formatDate', function (value) {
     }
 });
 
-var app = new Vue({
-    el: '#app'
+new Vue({
+    el: '#app',
+
+    data: function data() {
+        return {};
+    }
 });
 
 /***/ }),
@@ -66617,6 +66803,58 @@ module.exports = Component.exports
 
 /***/ }),
 
+/***/ "./resources/assets/js/components/Modal.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6e8d36f4\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Modal.vue")
+}
+var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
+/* script */
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Modal.vue")
+/* template */
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6e8d36f4\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Modal.vue")
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Modal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6e8d36f4", Component.options)
+  } else {
+    hotAPI.reload("data-v-6e8d36f4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/components/Paginator.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -66665,23 +66903,19 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/components/RegisterUser.vue":
+/***/ "./resources/assets/js/components/RolesIndex.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2f694076\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/RegisterUser.vue")
-}
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/RegisterUser.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/RolesIndex.vue")
 /* template */
 var __vue_template__ = null
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -66694,7 +66928,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/RegisterUser.vue"
+Component.options.__file = "resources/assets/js/components/RolesIndex.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -66703,9 +66937,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2f694076", Component.options)
+    hotAPI.createRecord("data-v-4788d9e8", Component.options)
   } else {
-    hotAPI.reload("data-v-2f694076", Component.options)
+    hotAPI.reload("data-v-4788d9e8", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true

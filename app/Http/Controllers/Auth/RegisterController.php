@@ -53,9 +53,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'username' => 'required|string|min:6|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
         ]);
     }
 
@@ -69,33 +69,13 @@ class RegisterController extends Controller
     protected function create(array $data)
     {   
         // if customer wants trial
-        if($data['subscription'] == 'v-a') {
-            return $user = User::create([            
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),  
-                'confirmation_token' => str_limit(md5($data['email'] . str_random()), 25, ''),
-                'trial_ends_at' => now()->addDays(14),
-            ]); 
-        }     
-        
-        // if customer submits card details
-        else if($data['subscription'] == 'v-b'){
-            $user = new User;
-
-            $user->name = $data['name'];
-            $user->email = $data['email'];
-            $user->password = Hash::make($data['password']);
-            $user->confirmation_token = str_limit(md5($data['email'] . str_random()), 25, '');
-            
-            $user->save();
-
-            $user->newSubscription('main', 'monthly')->create($data['stripeToken'], [
-                'email' => $user->email,
-            ]);            
-
-            return $user;
-        }
+        return $user = User::create([            
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'password' => $data['password'],  
+            'confirmation_token' => str_limit(md5($data['email'] . str_random()), 25, ''),
+            // 'trial_ends_at' => now()->addDays(30),
+        ]);   
     
     }
 

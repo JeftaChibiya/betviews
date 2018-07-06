@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container public-display">
     <nav class="level is-mobile">
         <div class="level-left">
             <p class="level-item">
@@ -11,12 +11,12 @@
         @guest
         <div class="level-right">
             <p class="level-item">
-                <a class="subtitle is-6 has-text-right" href="register">
+                <a class="subtitle is-6 has-text-right" href="/register">
                     Sign up
                 </a>
             </p>
             <p class="level-item">
-                <a class="subtitle is-6 has-text-right" href="login">
+                <a class="subtitle is-6 has-text-right" href="{{ route('login') }}">
                     Login
                 </a>
             </p>                                             
@@ -27,7 +27,7 @@
             <p class="level-item">
                 <span class="dot"></span> &nbsp;            
                 <a class="subtitle is-6" href="/user.profile">
-                    {{ ucfirst(Auth::user()->name) }}
+                    {{ ucfirst(Auth::user()->username ) }}
                 </a>
             </p> 
             <p class="level-item">/</p>
@@ -66,9 +66,12 @@
                 <a class="navbar-item" href="/site.tips">
                     Tips
                 </a>
-                <a class="navbar-item" href="/login">
-                    Inplay tips
+                <a class="navbar-item" href="/site.insight">
+                    Insight
                 </a>
+                <a class="navbar-item" href="/site.specials">
+                    Specials
+                </a>                
             </div>
         </div>
     </div>

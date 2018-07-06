@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Braintree\WebhookNotification;
 use Laravel\Cashier\Http\Controllers\WebhookController as CashierController;
 
 
@@ -15,11 +16,11 @@ class WebhookController extends CashierController
      * @param  array  $payload
      * @return Response
      */
-    public function handleInvoicePaymentSucceeded($payload)
+    public function handleDisputeOpened(WebhookNotification $notification)
     {
         
         // Handle The Event
-
+        
     }
 
 }

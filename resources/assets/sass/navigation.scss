@@ -1,0 +1,87 @@
+// NAVIGATION
+
+// Navbar
+.navbar {
+    /* #417690 */
+    background-color: #262626;
+    min-height: 3.25rem;
+    position: relative;
+}
+
+.navbar-item {
+    color: white
+}
+
+
+// Off-canvas menu
+
+.slideout-menu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 230px;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    min-height: 100vh;
+    overflow-y: scroll;
+    background-color: #141414;
+    -webkit-overflow-scrolling: touch;
+    z-index: 0;
+    display: none;
+    .subtitle {
+        color: white
+    }
+    .navbar-item {
+        color: white;
+        padding: 0.5rem 0;
+        font-size: 16px
+    }
+    a.navbar-item:hover,
+    a.navbar-item.is-active,
+    a.navbar-link:hover,
+    a.navbar-link.is-active {
+        background-color: transparent;
+        color: white
+    }
+}
+
+.slideout-menu-right {
+    right: 0;
+}
+
+.slideout-panel {
+    position: relative;
+    z-index: 1;
+    // will-change: transform;
+    background-color: #FFF;
+    /* A background-color is required */
+    min-height: 100vh;
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+    overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+    display: block;
+}
+
+.panel:before {
+    content: '';
+    display: block;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.5s ease-in-out;
+}
+
+.panel-open:before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 99;
+}
+// end of slideout menu specs

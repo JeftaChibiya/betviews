@@ -1,24 +1,17 @@
-@extends('layouts.auth')
+@extends('layouts.login-lt')
 
 @section('content')
 
-
-
-    <div class="margin-down has-text-centered">
-        <a href="/">
-            <img src="/images/branding/3.svg" style="width: 125px" alt="">                
-        </a>
-    </div>
-
     <div class="columns">
         <div class="column"></div>
-        <div class="column is-3-desktop is-5-tablet">
-                <p class="subtitle is-4 has-text-centered lato white">Welcome Back!</p>
+        <div class="column card is-4-desktop is-5-tablet">
+            <div class="content">
+            <p class="title is-4 lato is_white">Sign In</p>
                 
                 <form action="{{ route('login') }}" method="POST">
                     {{ csrf_field() }}                                
                     <div class="field">
-                        <input type="text" class="input is-medium" name="email" placeholder="Email">
+                        <input type="text" class="input is-large" name="email" placeholder="Email">
 
                         @if ($errors->has('email'))
                             <span class="invalid-feedback">
@@ -27,7 +20,7 @@
                         @endif                                    
                     </div>
                     <div class="field">
-                        <input type="text" class="input is-medium" name="password" placeholder="Password">    
+                        <input type="text" class="input is-large" name="password" placeholder="Password">    
                         @if ($errors->has('password'))
                             <span class="invalid-feedback">
                                 <strong>{{ $errors->first('password') }}</strong>
@@ -36,27 +29,28 @@
                     </div>  
 
                     <div class="field">                                   
-                        <button class="button is-dark" type="submit">SIGN IN</button>
+                        <button class="button is-large is_brand is-wide" type="submit">SIGN IN</button>
                     </div>   
 
                     <div class="level">
                         <div class="level-left">
                             <div class="level-item">
-                                <a class="is-link-success" href="/register">
-                                Sign Up!
+                                <a class="" href="/register">
+                                    Sign Up!
                                 </a>
                             </div>                                        
                         </div>                                     
                         <div class="level-right">
                             <div class="level-item">
-                                <a class="is-link-success" href="password/reset">
+                                <a class="" href="password/reset">
                                     Forgot Password?
                                 </a>
                             </div>                                   
                         </div>
                     </div>                                                            
 
-                </form>
+                </form>                
+            </div>
         </div>
         <div class="column"></div>                    
     </div>                

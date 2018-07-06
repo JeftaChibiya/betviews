@@ -1,0 +1,49 @@
+/** FORMS */
+
+/* A container to position LABELS */
+.label_input_container {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: auto;
+        
+    /* we put label on top of the input*/
+    label {
+        position: absolute;
+        top: 0;
+        right: 1px;
+        bottom: 1px;
+        left: .5em;
+        z-index: 1;
+        height: 1em;
+        font-size: 17px;
+        font-weight: 400;        
+        font-family: 'lato';
+        line-height: 3.5em;
+        color: #999;
+        white-space: nowrap;
+        cursor: text;
+        transition:all .1s ease;
+    }
+    
+    input:focus ~ label, input:valid ~label {       
+        left:7px;
+        top:-8px;
+        font-size:13px;
+        font-weight: 700;        
+        font-family: 'lato';         
+    }
+    input:valid ~label {
+        color:green;
+    }
+    input:focus:invalid ~label{
+        color:red;
+    }
+
+    input:required:valid ~label::before {
+        color:green;
+    }    
+}
+    
+
+// https://codepen.io/Wakkos/pen/hCquc

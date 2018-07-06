@@ -39,7 +39,7 @@ class CreateStakesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stakes');
-        Schema::dropIfExists('stake_tip');        
+        Schema::dropIfExists('stake_tip');         
+        Schema::dropIfExists('stakes');       
     }
 }

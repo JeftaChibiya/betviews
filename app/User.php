@@ -2,21 +2,22 @@
 
 namespace App;
 
+
 use Laravel\Cashier\Billable;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable, Billable;
-    
+    use Notifiable, Billable, HasRoles;
     
     protected $casts = [
         'confirmed' => 'boolean'
     ];
 
-    protected $dates = ['trial_ends_at', 'subscription_ends_at'];
+    // protected $dates = ['trial_ends_at', 'subscription_ends_at'];
 
     /**
      * The attributes that are mass assignable.
@@ -24,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'confirmation_token', 'trial_ends_at'
+        'username', 'email', 'password','trial_ends_at'
     ];
 
     /**
@@ -35,6 +36,19 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token'
     ];
+
+
+    /** 
+     * Mutate Password field
+     * 
+     */
+    public function setPasswordAttribute($password)
+    {   
+       
+        $this->attributes['password'] = \Hash::make($password);
+
+    }
+
 
     /** 
      *  Created: 25 Apr 2018 
@@ -49,41 +63,41 @@ class User extends Authenticatable
 
     }
 
-    /** 
-     *  Show what roles a user has
-     *  .e.g. want to assign role of editor to user
-     */
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class);
-    }    
+    // /** 
+    //  *  Show what roles a user has
+    //  *  .e.g. want to assign role of editor to user
+    //  */
+    // public function roles()
+    // {
+    //     return $this->belongsToMany(Role::class);
+    // }    
 
 
-    public function assignRole($role)
-    {
+    // public function assignRole($role)
+    // {
 
-        return $this->roles()->save(
-            Role::whereName($role)->firstOrFail()
-        );
+    //     return $this->roles()->save(
+    //         Role::whereName($role)->firstOrFail()
+    //     );
 
-    }       
+    // }       
 
 
-    /**     
-     *  Created: 29.4.18
-     *  i.e. user has role of editor: $user->hasRole('editor')
-     */
-    public function hasRole($role)
-    {
+    // /**     
+    //  *  Created: 29.4.18
+    //  *  i.e. user has role of editor: $user->hasRole('editor')
+    //  */
+    // public function hasRole($role)
+    // {
         
-        if(is_string($role)){
-            return $this->roles->contains('name', $role);
-        }
+    //     if(is_string($role)){
+    //         return $this->roles->contains('name', $role);
+    //     }
         
-        // remove any items from the '$role' collection that are not available
-        return $role->intersect($this->roles);
+    //     // remove any items from the '$role' collection that are not available
+    //     return $role->intersect($this->roles);
 
-    }      
+    // }      
 
 
 }

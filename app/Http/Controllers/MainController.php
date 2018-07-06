@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use App\Tip;
 use App\User;
 use GuzzleHttp\Exception\GuzzleException;
@@ -45,11 +46,40 @@ class MainController extends Controller
      */
     public function tips()
     {    	                
-        $tips = Tip::with('stakes')->get();
+        $tags = Tag::pluck('name', 'id');
+        $tips = Tip::with('stakes')->orderBy('updated_at','DESC')->get();
 
-    	return view('site.tips', compact('tips'));
+    	return view('site.tips', compact('tips', 'tags'));
 
-    }     
+    } 
+    
+    
+    /** 
+     * 
+     *  Insight page
+     * 
+     */
+    public function insight()
+    {    	                
+        $tags = Tag::pluck('name', 'id');
+
+    	return view('site.insight', compact('tags'));
+
+    }
+    
+    
+    /** 
+     * 
+     *  Specials page
+     * 
+     */
+    public function specials()
+    {    	                
+        // $tips = Tip::with('stakes')->orderBy('updated_at','DESC')->get();
+
+    	return view('site.specials');
+
+    }    
 
 
     /** 

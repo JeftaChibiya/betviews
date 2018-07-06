@@ -1,0 +1,14 @@
+/**  Media Queries **/ 
+
+// level
+@media screen and (max-width: 1088px) {
+    .content figure{
+        margin: 0 auto
+    }
+}
+
+@media (min-width: 733px) and (max-width: 1083px) {
+    .content figure{
+        margin: 1rem
+    }
+}

@@ -11,7 +11,8 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
+
+mix.js('resources/assets/js/app.js', 'public/js/')
    .js('resources/assets/bower/justifiedGallery/dist/js/jquery.justifiedGallery.min.js', 'public/js/justifiedgrid')
    .sass('resources/assets/sass/app.scss', 'public/css')
    .version()

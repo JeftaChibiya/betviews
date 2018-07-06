@@ -1,0 +1,254 @@
+/** DIVISIONS */ 
+
+body{
+    font-family: lato;
+}
+
+.betviews-intro{
+    height: 100vh
+}
+
+// Container 
+// @media screen and (min-width: 1200px) {
+//     .container {
+//         max-width: 1200px;
+//         width: 95%
+//     }
+// }
+.container {
+    width: 95%
+}
+
+.admin_notifications{
+    .tile.is-ancestor:not(:last-child) {
+        border-bottom: 1px solid rgba(#ddd, 0.3)
+    }
+}
+.dot {
+    height: 14px;
+    width: 14px;
+    background-color: #00d1b2;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+.box {
+    box-shadow: none;
+    border-radius: 2px;
+    border: 1px solid #ddd
+}
+
+trix-editor{
+    background-color: white
+}
+
+
+// Level - Bulma
+.level {
+    padding-top: 1rem;
+    padding-bottom: 1rem
+}
+
+.column.card{
+    background-color: #4A4A4A
+}
+
+// Tip display on tip/show - public. Custom element
+.tip-banner {
+    position: relative;    
+    width: 100%;
+    height: 230px;
+    color: #fff;
+    font-family: 'Fira Sans', sans-serif; 
+}
+
+#curve{
+    position: absolute;
+    bottom: 0;
+}
+
+#curve path{
+    fill: #fff
+} 
+
+
+
+/* Accordion */
+.accordion {
+    font-size: 1rem;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.accordion-header,
+.accordion-body {
+    background: white;
+}
+
+.accordion-header {
+    padding: 1.5em 1.5em;
+    background-color: #323334;
+    text-transform: uppercase;
+    color: white;
+    cursor: pointer;
+    font-size: .8em;
+    letter-spacing: .1em;
+    transition: all .3s;
+}
+
+.accordion-header:hover {
+    background: #454248;
+    position: relative;
+    z-index: 5;
+}
+
+.accordion-body {
+    background: #fcfcfc;
+    color: #3f3c3c;
+    display: none;
+}
+
+.accordion-body__contents {
+    padding: 1.5em 1.5em;
+    font-size: .85em;
+}
+
+.accordion__item.active:last-child .accordion-header {
+    border-radius: none;
+}
+
+.accordion:first-child>.accordion__item>.accordion-header {
+    border-bottom: 1px solid transparent;
+}
+
+.accordion__item>.accordion-header:after {
+    content: "\f107";
+    font-family: "FontAwesome";
+    font-size: 1.6em;
+    float: right;
+    position: relative;
+    top: -2px;
+    transition: .3s all;
+    transform: rotate(0deg);
+}
+
+.accordion__item.active>.accordion-header:after {
+    transform: rotate(-180deg);
+}
+
+.accordion__item.active .accordion-header {
+    background: #454248;
+}
+
+.accordion__item .accordion__item .accordion-header {
+    background: #f1f1f1;
+    color: black;
+}
+
+// Signup Page
+.login-view,
+.register-view {
+    .section {
+        padding-top: 1.8rem
+    }
+}
+
+// Progress Bar
+
+/* The progress container (grey background) */
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: #ccc;
+  }
+  
+  /* The progress bar (scroll indicator) */
+  .progress-bar {
+    height: 8px;
+    background: #4caf50;
+    width: 0%;
+  }
+  
+  .progress-container, .progress-bar{
+      display: none;
+      transition: .4
+  }
+ 
+  
+// Static Header - tip/show
+
+// Tip Header - tip.show 
+.offset {
+    margin-top: 0;
+    padding-top: 20px;
+    transition: .3s;
+}
+
+.tip_header {
+    color: whitesmoke;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 250px;
+    padding-top: 1rem;
+    font-weight: bold;
+    text-align: center;
+    background-color: lighten(#00B294, 1%);
+    // background-image:linear-gradient(141deg, #009e6c 0%, #00d1b2 71%, #00e7eb 100%);
+    transition: height .3s, background-image 10s ease-in-out;
+
+    #trademark{
+        position: relative;
+        bottom: 2px
+    }
+}
+.tip_header.small {  
+    z-index: 1;
+    height: 70px;
+    // padding-top:0;
+    transition: .4s;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: #3a4041;
+    
+    .subject, .trademark{
+        display: none
+    }
+}
+
+.tip_header.small ~ .offset {
+    padding-top: 110px;
+}
+
+.tip_header.small .header_logo {
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: none;
+}
+
+.header_logo {
+    font-family: $font_sans;
+    font-size: 35px;
+    transition: .3s;
+}
+
+
+// Footer
+.footer{
+    background-color: #262626;
+    color: white;
+}
+
+.footer, .auth-footer {
+    .title,
+    li>a,
+    .subtitle {
+        color: white
+    }
+}
+
+.auth-footer{
+    position: static;
+    bottom: 0;
+    width: 100%;
+}

@@ -26,15 +26,15 @@
     </div>
 
     <!-- preview and upcoming -->
-    <section class="section">
+    <!-- <section class="section">
         <div class="columns">
             <div class="column is-10 is-offset-1">
                 <p class="subtitle is-4">Matches presentations</p>
-                <small>date pagination</small>    
+                <small>date pagination</small>               
                 
                 <p class="subtitle is-4">Recent Tips</p>
                 <!-- category products -->                           
-                <div class="products-show">
+                <!-- <div class="products-show">
                     <div id="mygallery">
                         <div>
                             <img src="https://picsum.photos/" alt="">
@@ -54,5 +54,5 @@
                 <small>See more...</small>                
             </div>
         </div>
-    </section>
+    </section> -->
 @endsection

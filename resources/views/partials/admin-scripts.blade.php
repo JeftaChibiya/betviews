@@ -1,12 +1,38 @@
 <script src="{{ mix('js/app.js') }}"></script>  
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>  
+
+<script>
+Vue.directive('select2', {
+    bind: function () {
+        var vm = this.vm;
+        var key = this.expression;
+
+        var select = $(this.el);
+
+        select.select2();
+        select.on('change', function () {
+            vm.$set(key, select.val());
+        });
+    }
+});    
+</script>
+<!-- select2 -->  
+<script>
+    $(document).ready(function() {
+        $('#select2multiple').select2({
+            placeholder: "Select an option",
+            width: 'resolve',
+            tags: true,                                   
+        });
+    });
+</script>
+
 <script>
     function myFunction() {
         document.getElementById("demo").innerHTML = "Hello World";
     }
 </script>
-
-<script src="/js/justifiedgrid/jquery.justifiedGallery.min.js"></script>
 
 <!-- <script>
     $("#mygallery").justifiedGallery({

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Braintree\ClientToken;
 use Illuminate\Http\Request;
 
 
@@ -13,9 +14,10 @@ class AccountsController extends Controller
     public function __construct()
     {
     
-        $this->middleware('auth');
+        // $this->middleware('auth');
 
     }
+  
 
     
     /** 20.4.2018: return profile of auth:user */
@@ -33,4 +35,6 @@ class AccountsController extends Controller
         return view('user.profile', compact('user', 'days_remaining'));
 
     }
+
+
 }

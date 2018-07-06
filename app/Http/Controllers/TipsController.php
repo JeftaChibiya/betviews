@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use App\Tip;
 use App\Stake;
 use Illuminate\Http\Request;
@@ -25,6 +26,19 @@ class TipsController extends Controller
      */
     public function index()
     {
+        // WC2018 => FREE TX TRADER! FROM NOW UNTIL THE END OF THE WORLD CUP.
+        $appKey = "283ef421-6f23-11e8-91fa-06aae780a1ef";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://jsonodds.com/api/sports");
+        curl_setopt($ch, CURLOPT_HTTPGET, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'x-api-key:' . $appKey
+        ));
+        $res = curl_exec($ch);
+
+        $response = json_encode($res);   
 
     	return view('tip.index');
         
@@ -63,9 +77,9 @@ class TipsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function generalTip()
-    {         
-      
-        return view('tip.general');        
+    {                 
+        $tags = Tag::pluck('name', 'id');
+        return view('tip.general', compact('tags'));        
 
     }    
 
@@ -83,6 +97,7 @@ class TipsController extends Controller
             $tip = new Tip;
 
             $tip->intro = $request->input('tip_intro');
+            $tip->sub_intro = $request->input('sub_intro');            
             $tip->tip_body = $request->input('tip_body');
             $tip->match_title = $request->input('match_title');
             $tip->match_time = $request->input('match_time'); 
@@ -101,6 +116,8 @@ class TipsController extends Controller
             }
 
             $tip->save();
+
+            $tip->tags()->attach($request->input('tags'));
 
             if($request->input('bet_market'))
             {
@@ -128,10 +145,12 @@ class TipsController extends Controller
      */
 	public function show($id)
 	{
-		
-		$tip = Tip::find($id);
+        
+        $tip = Tip::find($id);
+        
+        $url = request()->fullUrl();
 
-		return view('tip.show', compact('tip'));
+		return view('tip.show', compact('tip', 'url'));
 
 	}
 

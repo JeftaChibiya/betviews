@@ -1,21 +1,72 @@
 @extends('layouts.main')
 
+<!-- Page metadata -->
+@section('url', $url)
+@section('title', $tip->intro)
+@section('type', 'article')
+@section('title',  $tip->intro )
+@section('desc', 'So here is the thing')
+@section('img', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Abricot_march%C3%A9_de_la_casbah_d%27Alger.JPG')
+<!-- 'http://localhost:3000/images/uploads/tips/cover_images/' . $tip->cover_image) -->
+
+<!-- Page content -->
 @section('content')
 
 <show-tip :tip="{{ json_encode($tip) }}"  inline-template>
-    <div class="container">
-        <div class="columns margin-down margin-up">
-            <div class="column is-8">
-                <div class="tip-banner">
-                    <figure>
-                        <img src="/images/uploads/tips/cover_images/{{ $tip->cover_image }}" style="width: 100%; height: 20%" alt="" />
-                    </figure>
-                </div>
-                <p class="title is-5 margin-down"><b>{{ $tip->intro }}</b></p>          
-                <p class="subtitle is-6" v-html="tip.tip_body"></p>            
-            </div>
-            <div class="column"></div>
+<div>
+    
+<div class="tip_header">
+        <div class="margin-down has-text-centered subject">
+            <small>World Cup 2018</small>                 
+        </div>
+
+        <p class="header_logo">{{ $tip->intro }}</p>
+
+        <div class="has-text-centered trademark">
+            <b style="color: #A0A0A0">Betviews</b>               
+        </div>  
+        <!-- reading progress indicator -->
+        <div class="progress-container">
+            <div class="progress-bar" id="myBar"></div>
         </div>
     </div>
+
+    <section class="section is-narrow offset offset-content">
+        <div class="level is-mobile">
+            <div class="level-left">
+                <div class="level-item">
+                    <small>WORLD CUP 2018</small>                             
+                </div>
+
+                <div class="level-item">
+                    |                            
+                </div>
+
+                <div class="level-item">
+                    <b style="color: #A0A0A0">BETVIEWS</b>
+                </div>
+                <div class="level-item">
+                    {{ strtoupper($tip->created_at->format('M d, Y')) }}
+                </div>
+            </div>
+            <div class="level-right">
+                <div class="level-item">
+                    
+                    <!-- fb share button code -->
+                    <i class="fa fa-facebook-square fa-2x" id="fbShareBtn"></i>             
+                </div>
+                <div class="level-item"></div>                
+                <div class="level-item">
+                    <b>10 Shares</b>
+                </div>
+            </div>
+        </div>         
+        <p class="subtitle is-6" v-html="tip.tip_body"></p>           
+    </section> 
+
+<!-- Example of article page design: https://designmodo.com/gradients/ -->
+<!-- Example of trending tips: https://sujipthapa.co/blog/how-to-create-a-trending-articles-list-using-google-analytics-with-laravel -->
+</div>
+
 </show-tip>
 @endsection

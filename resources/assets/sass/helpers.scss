@@ -1,0 +1,97 @@
+// helpers 
+.is-wide{
+    width: 100%
+}
+.margin-2{
+    margin-bottom: 2px
+}
+.margin-10{
+    margin-bottom: 10px
+}
+
+.margin-20{
+    margin-bottom: 20px    
+}
+
+.margin-down{
+    margin-bottom: 1.8rem
+}
+.margin-up{
+    margin-top: 1.8rem
+}
+
+.bg_cover{
+    background-size: cover;
+    background-repeat: no-repeat
+}
+
+.with-gradient{
+    background: rgba(226,245,240,1);
+    background: -moz-linear-gradient(-70deg, rgba(226,245,240,1) 0%, rgba(252,252,252,1) 50%, rgba(247,247,247,1) 51%, rgba(247,247,247,1) 68%, rgba(255,255,255,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(226,245,240,1)), color-stop(50%, rgba(252,252,252,1)), color-stop(51%, rgba(247,247,247,1)), color-stop(68%, rgba(247,247,247,1)), color-stop(100%, rgba(255,255,255,1)));
+    background: -webkit-linear-gradient(-70deg, rgba(226,245,240,1) 0%, rgba(252,252,252,1) 50%, rgba(247,247,247,1) 51%, rgba(247,247,247,1) 68%, rgba(255,255,255,1) 100%);
+    background: -o-linear-gradient(-70deg, rgb(237, 247, 244) 0%, rgba(252,252,252,1) 50%, rgba(247,247,247,1) 51%, rgba(247,247,247,1) 68%, rgba(255,255,255,1) 100%);
+    background: -ms-linear-gradient(-70deg, rgba(226,245,240,1) 0%, rgba(252,252,252,1) 50%, rgba(247,247,247,1) 51%, rgba(247,247,247,1) 68%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(-70deg, rgba(226,245,240,1) 0%, rgba(252,252,252,1) 50%, rgba(247,247,247,1) 51%, rgba(247,247,247,1) 68%, rgba(255,255,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2f5f0', endColorstr='#ffffff', GradientType=1 );       
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+// colors 
+
+.is_dark
+{
+    background-color: darken(#4a4a4a, 10%);
+}
+
+.is_white{
+    color: darken(white, 4%)
+}
+.is_turq{
+    background-color: #1abc9c;
+    color: white;
+    border-color: transparent
+}
+.is_brand{
+    background-color: #f7e336;
+    color: black;
+    border-color: transparent
+}
+
+.subtitle.is_lato{
+    font-family: 'Open+Sans, lato', sans-serif;
+    font-weight: 300
+}
+
+a.is_white{
+    color: darken(white, 8%)    
+}
+
+.button.is_brand{
+    background-color: rgb(247, 227, 54);
+    border: none
+}
+
+.is_full_width{
+    width: 100%
+}
+
+.is_at_bottom{
+    position: relative;
+    bottom: 2px
+}
+
+// #select2multiple{
+//     width: 100%;
+// }
+
+.select2-container--default .select2-selection--multiple{
+    border-radius: 2px;
+    border: 1px solid #8c8c8c    
+}

@@ -15,13 +15,11 @@ class CreatePlansTable extends Migration
     {
         Schema::create('plans', function ($table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
             $table->string('name');
-            $table->string('stripe_id');
-            $table->string('stripe_plan');
-            $table->integer('quantity');
-            $table->timestamp('trial_ends_at')->nullable();
-            $table->timestamp('ends_at')->nullable();
+            $table->string('slug')->unique();            
+            $table->string('braintree_plan');
+            $table->float('cost');
+            $table->text('description')->nullable();        
             $table->timestamps();
         });
     }

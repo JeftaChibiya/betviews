@@ -14,7 +14,7 @@
                 </div>
 
                 <!-- quick links   -->
-                <div class="column">
+                <!-- <div class="column">
                     <p class="title is-5 modified"><b>Bets</b></p>
                     <ul>
                         <li>
@@ -28,7 +28,7 @@
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
 
                 <!-- help & support  -->
                 <div class="column">
@@ -43,8 +43,25 @@
                     </ul>
                 </div>
 
+                <div class="column is-6">
+                    <p class="title is-5 modified"><b>Also find us here</b></p>
+                    <ul>
+                        <li>
+<div class="fb-page" 
+  data-href="https://www.facebook.com/Betviews-Football-Tips-191048638259707/?modal=admin_todo_tour"
+  data-width="280" 
+  data-height="30"
+  data-hide-cover="false"
+  data-show-facepile="false"></div>
+                        </li>
+                        <li>
+                        </li>
+                    </ul>
+                </div>                
+
             </div>
         </div>
+        <br/>
         <br/>
         <p class="subtitle is-6 has-text-centered">
             Betting Odds come directly from bookmakers. Please check the bookmaker’s website before making a bet
