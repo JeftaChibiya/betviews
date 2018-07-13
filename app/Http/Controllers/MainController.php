@@ -21,7 +21,8 @@ class MainController extends Controller
     public function index()
     {    	                
              
-    	return view('site.index');
+        $tips = Tip::all();
+    	return view('site.index', compact('tips'));
 
     } 
 
@@ -45,13 +46,11 @@ class MainController extends Controller
      * 
      */
     public function tips()
-    {    	                
-        $client = new DropboxClient(config('filesystems.disks.dropbox.token'));  
+    {    	               
 
-        $tags = Tag::pluck('name', 'id');
-        $tips = Tip::with('stakes')->orderBy('updated_at','DESC')->get();
+        $tags = Tag::with('tips')->get();
 
-    	return view('site.tips', compact('tips', 'tags', 'client'));
+    	return view('site.tips', compact('tags'));
 
     } 
     

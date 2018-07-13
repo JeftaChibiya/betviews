@@ -66,7 +66,8 @@ class TipsController extends Controller
      */
     public function generalTip()
     {                 
-        $tags = Tag::pluck('name', 'id');
+        $tags = Tag::all();
+        
         return view('tip.general', compact('tags'));        
 
     }    
@@ -87,10 +88,6 @@ class TipsController extends Controller
             $tip->intro = $request->input('tip_intro');
             $tip->sub_intro = $request->input('sub_intro');            
             $tip->tip_body = $request->input('tip_body');
-            $tip->match_title = $request->input('match_title');
-            $tip->match_time = $request->input('match_time'); 
-            $tip->side_one = $request->input('side_one');    
-            $tip->side_two = $request->input('side_two'); 
 
             if($request->hasFile('cover_image'))
             {
@@ -105,7 +102,11 @@ class TipsController extends Controller
 
             $tip->save();
 
-            $tip->tags()->attach($request->input('tags'));
+            $tags = json_decode($request->get('tags'));
+
+            foreach($tags as $tag){
+                $tip->tags()->attach($tag->id);                
+            }
 
             if($request->input('bet_market'))
             {
@@ -204,4 +205,10 @@ class TipsController extends Controller
     {
         //
     }
+
+
+    // $tip->match_title = $request->input('match_title');
+    // $tip->match_time = $request->input('match_time'); 
+    // $tip->side_one = $request->input('side_one');    
+    // $tip->side_two = $request->input('side_two'); 
 }

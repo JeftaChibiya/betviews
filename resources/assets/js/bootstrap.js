@@ -5,6 +5,8 @@ window.Trix = require('trix');
 window.Vue = require('vue');
 window.Slideout = require('slideout');
 window.moment = require('moment');
+import Tabs from 'vue-tabs-component';
+Vue.use(Tabs);
 import VueUp from 'vueup';
 
 

@@ -23,6 +23,12 @@ Route::get('tip.betting-tip', 'TipsController@bettingTip')->name('tip.betting-ti
 Route::get('tip.general-tip', 'TipsController@generalTip')->name('tip.general-tip');
 Route::post('tip.store', 'TipsController@store')->name('tip.store');
 
+// tags / topics 
+Route::post('tag.store', 'TagsController@store')->name('tag.store');
+
+// quizzes
+Route::resource('quiz', 'QuizzesController');
+Route::resource('question', 'QuestionsController');
 
 Route::get('test-odds-api', 'MainController@test')->name('test-odds-api');
 Route::get('dummy', 'AccountsController@form')->name('dummy');

@@ -23,5 +23,9 @@ class PermissionsSeeder extends Seeder
             'edit_roles',
             'delete_roles'            
         ];
+
+        foreach($permissions as $permission) {
+            Permission::create(['name'=>$permission]);
+        }        
     }
 }

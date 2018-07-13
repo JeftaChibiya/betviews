@@ -20,7 +20,7 @@
             <small>World Cup 2018</small>                 
         </div>
 
-        <p class="header_logo">{{ $tip->intro }}</p>
+        <p class="header_logo">@{{ tip.intro }}</p>
 
         <div class="has-text-centered trademark">
             <b style="color: #A0A0A0">Betviews</b>               
@@ -41,13 +41,21 @@
                 <div class="level-item">
                     |                            
                 </div>
-
                 <div class="level-item">
                     <b style="color: #A0A0A0">BETVIEWS</b>
                 </div>
                 <div class="level-item">
-                    {{ strtoupper($tip->created_at->format('M d, Y')) }}
+                    |                            
                 </div>
+                <div class="level-item">
+                    {{ strtoupper($tip->created_at->format('l j F Y')) }}
+                </div>
+                <div class="level-item">
+                    |                            
+                </div>
+                <div class="level-item">
+                    {{ $tip->created_at->format('H:m') }}                         
+                </div>                
             </div>
             <div class="level-right">
                 <div class="level-item">

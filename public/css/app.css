@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);@import url(https://fonts.googleapis.com/css?family=Merriweather);@import url(https://fonts.googleapis.com/css?family=Open+Sans:300, 600);@import url(https://fonts.googleapis.com/css?family=Quicksand);@import url(https://fonts.googleapis.com/css?family=Lato:400,700);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);@import url(https://fonts.googleapis.com/css?family=Merriweather);@import url(https://fonts.googleapis.com/css?family=Open+Sans:300, 600);@import url(https://fonts.googleapis.com/css?family=Quicksand);@import url(https://fonts.googleapis.com/css?family=Lato:400,700);@import url(https://fonts.googleapis.com/css?family=Vibur);@charset "UTF-8";
 
 /*! bulma.io v0.7.1 | MIT License | github.com/jgthms/bulma */
 
@@ -11547,6 +11547,17 @@ section.section {
   padding-top: .2rem;
 }
 
+section.section.is_display {
+  padding: 5rem 8.5rem;
+}
+
+section.section.is_display .tile.is-ancestor .tile.is-parent .tile.is-child .overlay {
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .section.is-narrow {
   width: 70%;
   margin: 0 auto;
@@ -11554,6 +11565,11 @@ section.section {
 
 .section.is-large {
   padding: 13rem 1.5rem;
+}
+
+.no_box_shadow {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .button {
@@ -11675,6 +11691,111 @@ trix-editor {
 
 #curve path {
   fill: #fff;
+}
+
+.tabs-component {
+  margin: 4em 0;
+}
+
+.tabs-component-tabs {
+  margin-bottom: 5px;
+}
+
+@media (min-width: 700px) {
+  .tabs-component-tabs {
+    border: 0;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    margin-bottom: -1px;
+  }
+}
+
+.tabs-component-tab {
+  color: #999;
+  font-size: 14px;
+  font-weight: 600;
+  margin-right: 0;
+  list-style: none;
+}
+
+.tabs-component-tab:hover {
+  color: #666;
+}
+
+.tabs-component-tab.is-active {
+  color: #000;
+}
+
+.tabs-component-tab.is-disabled * {
+  color: #cdcdcd;
+  cursor: not-allowed !important;
+}
+
+@media (min-width: 700px) {
+  .tabs-component-tab {
+    margin-right: .5em;
+    -webkit-transform: translateY(2px);
+            transform: translateY(2px);
+    -webkit-transition: -webkit-transform .3s ease;
+    transition: -webkit-transform .3s ease;
+    transition: transform .3s ease;
+    transition: transform .3s ease, -webkit-transform .3s ease;
+  }
+
+  .tabs-component-tab.is-active {
+    border-bottom: solid 2px #1abc9c;
+    z-index: 2;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+.tabs-component-tab-a {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: .75em 1em;
+  text-decoration: none;
+}
+
+.tabs-component-panels {
+  padding: 4em 0;
+}
+
+@media (min-width: 700px) {
+  .tabs-component-panels {
+    border-top: solid 1px rgba(221, 221, 221, 0.5);
+  }
+}
+
+/*  Overlay */
+
+.overlay {
+  padding: 0.75rem;
+  position: relative;
+  /* Sit on top of the page content */
+  width: 100%;
+  /* Full width (cover the whole page) */
+  height: 100%;
+  /* Full height (cover the whole page) */
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Black background with opacity */
+}
+
+.overlay .subtitle {
+  color: white;
 }
 
 /* Accordion */
@@ -11911,6 +12032,109 @@ trix-editor {
 
 .label_input_container input:required:valid ~ label::before {
   color: green;
+}
+
+.flat_input {
+  border-bottom: 1px solid #ffbe02;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.flat_input:after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  background: #fff;
+  width: 0px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: -2px;
+  opacity: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.flat_input .input,
+.flat_input .textarea {
+  border: none;
+  position: relative;
+  z-index: 2;
+  padding: 5px;
+  background: none;
+  color: #141414;
+  width: 100%;
+}
+
+.flat_input .input::-webkit-input-placeholder,
+.flat_input .textarea::-webkit-input-placeholder {
+  color: #616060;
+  font-size: 20px;
+}
+
+.flat_input .input:-ms-input-placeholder,
+.flat_input .textarea:-ms-input-placeholder {
+  color: #616060;
+  font-size: 20px;
+}
+
+.flat_input .input::-ms-input-placeholder,
+.flat_input .textarea::-ms-input-placeholder {
+  color: #616060;
+  font-size: 20px;
+}
+
+.flat_input .input::placeholder,
+.flat_input .textarea::placeholder {
+  color: #616060;
+  font-size: 20px;
+}
+
+.flat_input .input:focus,
+.flat_input .input:active,
+.flat_input .textarea:focus,
+.flat_input .textarea:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+
+.flat_input.focus:after {
+  opacity: 1;
+  width: 100%;
+  background: #FE5F01;
+}
+
+.ripple {
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(221, 74, 58, 0.5);
+  -webkit-transform: scale(0, 0);
+  transform: scale(0, 0);
+  position: absolute;
+  opacity: 1;
+}
+
+.rippleEffect {
+  -webkit-animation: rippleDrop 0.3s ease-in;
+  animation: rippleDrop 0.3s ease-in;
+}
+
+@-webkit-keyframes rippleDrop {
+  to {
+    -webkit-transform: scale(2.5);
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes rippleDrop {
+  to {
+    -webkit-transform: scale(2.5);
+    transform: scale(2.5);
+    opacity: 0;
+  }
 }
 
 .is-wide {

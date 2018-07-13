@@ -2,7 +2,7 @@
 
 @section('content')
 
-<general-tip inline-template>
+<general-tip :tags="{{ $tags }} " inline-template>
     <section class="section">
         <p class="title is-4 has-text-centered">New General Tip</p>    
         <div class="columns">
@@ -20,15 +20,18 @@
                             <input type="text" class="input" v-model="tip_intro" placeholder="World Cup 2018: Group A tips" :should-clear="completed">
                         </div>            
                     </div>
-                    
-                    <div class="field">
-                        <label class="label">Topic</label>
-                            <select id="select2multiple" v-model="selected" @change="onSelected($event.target.value)" multiple="multiple" style="width: 100%">                              
-                                @foreach($tags as $id => $name)
-                                    <option :value="{{ $id }}">{{ $name }}</option>
-                                @endforeach
-                            </select>                        
-                    </div>
+
+                    <label class="label">Topic</label>
+                    <div class="field is-grouped">
+                        <p class="control is-expanded">
+                            <v-select placeholder="Select Topic" label="name" :options="tags" v-model="selected" taggable multiple></v-select> 
+                        </p>
+                        <p class="control">
+                            <a class="button is-dark new-topic" id="toggle-right">
+                                NEW TOPIC
+                            </a>
+                        </p>
+                    </div>                    
 
                     <div class="field">
                         <label class="label">Cover image</label>

@@ -6,20 +6,6 @@ require('./bootstrap');
 
 /** Vue.js */
 
-Vue.component('dummy', require('./components/Dummy.vue'));
-Vue.component('betting-tip', require('./components/BettingTip.vue'));
-Vue.component('general-tip', require('./components/GeneralTip.vue'));
-// Vue.component('register-user', require('./components/RegisterUser.vue'));
-Vue.component('flash', require('./components/Flash.vue'));
-Vue.component('paginator', require('./components/Paginator.vue'));
-Vue.component('user-notifications', require('./components/UserNotifications.vue'));
-// Vue.component('avatar-form', require('./components/AvatarForm.vue'));
-Vue.component('wysiwyg', require('./components/Wysiwyg.vue'));
-Vue.component('show-tip', require('./components/ShowTip.vue'));
-Vue.component('roles-index', require('./components/RolesIndex.vue'));
-Vue.component('modal', require('./components/Modal.vue'));
-
-
 // Vue directive: v-select
 Vue.directive('select', {
     twoWay: true,
@@ -32,72 +18,7 @@ Vue.directive('select', {
         });
     },
 });
-  
-
-Vue.component('tabs', {
-    template: `
-        <div>
-            <div class="custom_tab">
-                <ul>
-                    <li v-for="tab in tabs" :class="{ 'is-active': tab.isActive }">
-                        <button :href="tab.href" @click="selectTab(tab)">{{ tab.name | capitalize }}</button>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="tabcontent">
-                <slot></slot>
-            </div>
-        </div>
-    `,
-
-    data() {
-        return { tabs: [] };
-    },
-
-    created() {
-        this.tabs = this.$children;
-    },
-
-    methods: {
-        selectTab(selectedTab) {
-            this.tabs.forEach(tab => {
-                tab.isActive = (tab.href == selectedTab.href);
-            });
-        }
-    }
-});
-
-
-Vue.component('tab', {
-    template: `
-        <div v-show="isActive"><slot></slot></div>
-    `,
-
-    props: {
-        name: { required: true },
-        selected: { default: false }
-    },
-
-    data() {
-        return {
-            isActive: false
-        };
-    },
-
-    computed: {
-        href() {
-            return '#' + this.name.toLowerCase().replace(/ /g, '-');
-        }
-    },
-
-    mounted() {
-        this.isActive = this.selected;
-    },
-});
-
-
-
+// Filter: Captilize the first letter of word
 Vue.filter('capitalize', function(value) {
     if (!value) return ''
     value = value.toString()
@@ -111,12 +32,24 @@ Vue.filter('formatDate', function(value) {
 });
 
 
+// Components
+Vue.component('dummy', require('./components/Dummy.vue'));
+Vue.component('betting-tip', require('./components/BettingTip.vue'));
+Vue.component('general-tip', require('./components/GeneralTip.vue'));
+Vue.component('flash', require('./components/Flash.vue'));
+Vue.component('paginator', require('./components/Paginator.vue'));
+Vue.component('user-notifications', require('./components/UserNotifications.vue'));
+Vue.component('wysiwyg', require('./components/Wysiwyg.vue'));
+Vue.component('show-tip', require('./components/ShowTip.vue'));
+Vue.component('roles-index', require('./components/RolesIndex.vue'));
+Vue.component('modal', require('./components/Modal.vue'));
+Vue.component('right-drawer', require('./components/RightDrawer.vue'));
+Vue.component('tips-display', require('./components/TipsDisplay.vue'));
+Vue.component('new-quiz', require('./components/NewQuiz.vue'));
+
+
+
 new Vue({
     el: '#app',
-    
-    data() {
-        return {
 
-        }
-    }
 });

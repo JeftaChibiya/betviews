@@ -2,7 +2,7 @@
     <div class="level-left">
         <div class="level-item">
             <div>
-                <p class="title is-5 toggle-button">
+                <p class="title is-5 toggle-button" id="toggle-left">
                 <span class="icon">
                     <i class="fa fa-bars"></i>
                 </span>                    

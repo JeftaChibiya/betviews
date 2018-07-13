@@ -1,6 +1,10 @@
 /** FORMS */
 
+
+// Sat 01/06/2018
 /* A container to position LABELS */
+// Credit to: // https://codepen.io/Wakkos/pen/hCquc
+
 .label_input_container {
     position: relative;
     top: auto;
@@ -44,6 +48,53 @@
         color:green;
     }    
 }
-    
+// End
 
-// https://codepen.io/Wakkos/pen/hCquc
+
+// Tue 10-07-2018
+// Form field with no border, no outline. Material reaction to focus
+// Credit to: https://codepen.io/vineethtr/pen/PqaPox
+.flat_input {
+    border-bottom: 1px solid #ffbe02;
+    position: relative;
+    margin-bottom: 15px;
+}
+.flat_input:after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    background: #fff;
+    width: 0px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: -2px;
+    opacity: 0;
+    transition: 0.3s;
+}
+.flat_input .input, .flat_input .textarea {
+    border: none;
+    position: relative;
+    z-index: 2;
+    padding: 5px;
+    background: none;
+    color: rgb(20, 20, 20);
+    width: 100%;
+    &::placeholder {
+        color: rgb(97, 96, 96);
+        font-size: 20px
+    }    
+}
+.flat_input .input:focus, 
+.flat_input .input:active,
+.flat_input .textarea:focus, 
+.flat_input .textarea:active {
+    box-shadow: none;
+    outline: none;
+}
+.flat_input.focus:after {
+    opacity: 1;
+    width: 100%;
+    background: #FE5F01;
+}
+// End

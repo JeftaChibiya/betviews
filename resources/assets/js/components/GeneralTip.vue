@@ -1,9 +1,12 @@
 <script>
     import Wysiwyg from '../components/Wysiwyg.vue';
+    import vSelect from 'vue-select';
 
     // https://jsfiddle.net/dux6q43p/
 
     export default {
+
+        props: ['tags'],
 
         data() {
             return {
@@ -13,9 +16,13 @@
                 cover_image: null,
                 tip_body: '',
                 completed: false,
-                selected: []
+                selected: [],
             }
         }, 
+
+        components: {
+            vSelect
+        },
 
         computed: {
 
@@ -27,13 +34,17 @@
 
         methods: {
 
-            onSelected(value) {
-                this.$emit('input', value);
-            },
-
-            isSelected(option) { 
-                return option.optionId === this.value;
-            },
+            // Create new tag
+            // createOption: {
+            //     type: Function,
+            //     default(newOption) {
+            //         if (typeof this.mutableOptions[0] === 'object') {
+            //             newOption = {[this.label]: newOption}
+            //         }
+            //         this.$emit('option:created', newOption)
+            //         return newOption
+            //     }
+            // },
 
             onChange(e) {                       
                                   
@@ -55,7 +66,7 @@
                formInput.append('subtitle', this.subtitle);               
                formInput.append('cover_image', this.cover_image, this.cover_image.name);                                                          
                formInput.append('tip_body', this.tip_body);
-               formInput.append('tags', this.selected);
+               formInput.append('tags', JSON.stringify(this.selected));
 
                axios.post('/tip.store', formInput)
                   .then(                      

@@ -7,24 +7,26 @@
     <br/><br/>
    <!-- Admin pages -->
    <div class="container">
+    <section class="section is_display">
         <div class="tile is-ancestor">
             <a class="tile is-parent" href="/tip.index">
                 <div class="tile is-child box">
-                <p class="title is-4">Tips</p>
-                <p class="subtitle is-5">Add, edit, view, share tips</p>
+                <p class="title is-4" style="align-self: center">Tips & Insight</p>
+                <p class="subtitle is-5" style="align-self: flex-end">Add, edit, view, share tips</p>
                 </div>
             </a>                
-            <div class="tile is-6 is-vertical is-parent">
+            <div class="tile is-vertical is-parent">
+                <a class="tile is-child box" href="/quiz">
+                    <p class="title is-4" style="align-self: center">Quizzes & Specials</p>
+                    <p class="subtitle is-5" style="align-self: flex-end">Test visitors' knowledge of the game</p>
+                </a>            
                 <a class="tile is-child box" href="{{ route('user.index') }}">
-                    <p class="title is-4">Users</p>
-                    <p class="subtitle is-5">Add, edit, view users</p>
-                </a>
-                <a class="tile is-child box">
-                <p class="title is-4">More...</p>
-                <p class="subtitle is-5">Add, edit, view, share tips</p>
+                    <p class="title is-4" style="align-self: center">Users</p>
+                    <p class="subtitle is-5" style="align-self: flex-end">Add, edit, view users</p>
                 </a>
             </div>
-        </div>
+        </div>    
+    </section>
   </div>
 
   <br/>

@@ -21,6 +21,14 @@
 section.section
     padding-top: .2rem
 
+section.section.is_display
+    padding: 5rem 8.5rem
+    .tile.is-ancestor
+        .tile.is-parent
+            .tile.is-child .overlay
+                height: 300px
+                display: flex
+
 .section.is-narrow
     width: 70%
     margin: 0 auto    
@@ -28,6 +36,8 @@ section.section
 .section.is-large
     padding: 13rem 1.5rem    
 
+.no_box_shadow
+    box-shadow: none
 .button
     font-family: lato
     border-radius: 1px

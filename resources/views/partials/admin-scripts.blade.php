@@ -1,24 +1,78 @@
-<script src="{{ mix('js/app.js') }}"></script>  
+<script src="{{ mix('js/app.js') }}"></script>   
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>  
+        <script>
+    ////////////____Input Focus___//////////////////
 
-<script>
-Vue.directive('select2', {
-    bind: function () {
-        var vm = this.vm;
-        var key = this.expression;
+    $('.flat_input .input, .textarea').focusout(function() {
+        $('.flat_input').removeClass('focus');
+    });
+    $('.flat_input .input, .textarea').focus(function() {
+        $(this).closest('.flat_input').addClass('focus');
+    });
 
-        var select = $(this.el);
+    /// Input Kepress Filled  Focus
+    $('.flat_input .input, .textarea').keyup(function() {
+        if($(this).val().length > 0){
+            $(this).closest('.flat_input').addClass('filled');
+        }
 
-        select.select2();
-        select.on('change', function () {
-            vm.$set(key, select.val());
-        });
-    }
-});    
-</script>
+        else{
+            $(this).closest('.flat_input').removeClass('filled');
+        }
+    });
+
+    /// Input Check Filled Focus
+    var $formControl = $('.flat_input .input, .textarea');
+    var values = {};
+    var validate =    $formControl.each(function() {
+        if($(this).val().length > 0){
+            $(this).closest('.flat_input').addClass('filled');
+        }
+        else{
+            $(this).closest('.flat_input').removeClass('filled');
+        }
+    });
+
+//Ripple Effect
+$(".btn").click(function(e) {
+
+  // Remove olds ones
+  $(".ripple").remove();
+
+  // Setup
+  var posX = $(this).offset().left,
+      posY = $(this).offset().top,
+      buttonWidth = $(this).width(),
+      buttonHeight = $(this).height();
+
+  // Add the element
+  $(this).prepend("<span class='ripple'></span>");
+
+  // Make it round!
+  if (buttonWidth >= buttonHeight) {
+    buttonHeight = buttonWidth;
+  } else {
+    buttonWidth = buttonHeight;
+  }
+
+  // Get the center of the element
+  var x = e.pageX - posX - buttonWidth / 2;
+  var y = e.pageY - posY - buttonHeight / 2;
+
+  // Add the ripples CSS and start the animation
+  $(".ripple").css({
+    width: buttonWidth,
+    height: buttonHeight,
+    top: y + 'px',
+    left: x + 'px'
+  }).addClass("rippleEffect");
+});
+
+
+        </script>
+
 <!-- select2 -->  
-<script>
+<!-- <script>
     $(document).ready(function() {
         $('#select2multiple').select2({
             placeholder: "Select an option",
@@ -26,7 +80,7 @@ Vue.directive('select2', {
             tags: true,                                   
         });
     });
-</script>
+</script> -->
 
 <script>
     function myFunction() {
@@ -48,39 +102,70 @@ Vue.directive('select2', {
 <!-- First instance of slideout menu -->
 <script>
     window.Slideout;
+    (function () {
+        
+        // declare slideouts as new variables
+        var leftSlideout = new  Slideout({
+            'panel': document.getElementById('panel'),
+            'menu': document.getElementById('left-menu'),
+            'padding': 256,
+            'tolerance': 70
+        });
+        var rightSlideout = new  Slideout({
+            'panel': document.getElementById('panel'),
+            'menu': document.getElementById('right-menu'),
+            'padding': 256,
+            'tolerance': 70,
+            'side': 'right'
+        });
 
-    document.querySelector('.toggle-button').addEventListener('click', function() {
-        slideout.toggle();
-    });
 
-    function close(event) {
-        event.preventDefault();
+        var leftMenu = document.getElementById('left-menu');
+        var rightMenu = document.getElementById('right-menu');
+
+        document
+            .querySelector('#toggle-left')
+            .addEventListener('click', function() {
+            leftSlideout.toggle();
+            leftMenu.style.zIndex = '0';
+
+            leftSlideout.on('close', function () {
+                leftMenu.style.zIndex = '-1';
+            });
+
+        });
+
+        document
+            .querySelector('#toggle-right')
+            .addEventListener('click', function() {
+            rightSlideout.toggle();
+            rightMenu.style.zIndex = '0';
+
+            rightSlideout.on('close', function () {
+                rightMenu.style.zIndex = '-1';
+            });
+
+        });       
+
+        })();          
+
+        function close(eve) {
+        eve.preventDefault();
         slideout.close();
-    } 
+        }
 
-// slideout panel - admin
-    var slideout = new Slideout({
-        'panel': document.getElementById('panel'),
-        'menu': document.getElementById('menu'),
-        'padding': 230,
-        'tolerance': 70,
-        'side': 'left'
-    });
-
-    // adding an overlay
-    slideout
-        .on('beforeopen', function() {
-        this.panel.classList.add('panel-open');
-        })
-        .on('open', function() {
-        this.panel.addEventListener('click', close);
-        })
-        .on('beforeclose', function() {
-        this.panel.classList.remove('panel-open');
-        this.panel.removeEventListener('click', close);
-    });           
+        // slideout
+        // .on('beforeopen', function() {
+        //     this.panel.classList.add('panel-open');
+        // })
+        // .on('open', function() {
+        //     this.panel.addEventListener('click', close);
+        // })
+        // .on('beforeclose', function() {
+        //     this.panel.classList.remove('panel-open');
+        //     this.panel.removeEventListener('click', close);
+        // });         
 </script>
-
 
 
 <script>

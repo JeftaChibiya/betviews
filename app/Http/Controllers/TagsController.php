@@ -8,8 +8,12 @@ use Illuminate\Http\Request;
 class TagsController extends Controller
 {
 
-    public function all()
+    public function store(Request $request)
     {
-        return Tag::pluck('name', 'id');
+        $tag = new Tag;
+
+        $tag->name = $request->name;
+
+        $tag->save();
     }
 }

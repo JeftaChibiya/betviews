@@ -492,10 +492,100 @@ class CreateSubscriptionsTable extends Migration
                 </div>               
             </div>
         </div>   -->
-        
+            
 
-<!-- <meta property="og:url" content="{{ $url }}" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="{{ $tip->title }}" />
-<meta property="og:description" content="{{ $tip->description }}" /> -->
-<!-- <meta property="og:image" content="{{ $tip->cover_image }}" /> -->        
+//  06/07/2018
+<select id="select2multiple" v-model="selected" multiple="multiple" style="width: 100%">                              
+    @foreach($tags as $id => $name)
+        <option :value="{{ $id }}" @change="onSelected($event.target.value)">{{ $name }}</option>
+    @endforeach
+</select>   
+
+// 13.07.18
+<!-- <div class="margin-down">
+    <div class="tile is-ancestor">
+        <div class="tile is-parent">
+            <div class="tile is-child box">
+            <p class="title is-4">Most recent</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, leo sit amet vehicula eleifend, nunc dui porta orci, quis semper odio felis ut quam.</p>
+            <p>Suspendisse varius ligula in molestie lacinia. Maecenas varius eget ligula a sagittis. Pellentesque interdum, nisl nec interdum maximus, augue diam porttitor lorem, et sollicitudin felis neque sit amet erat. Maecenas imperdiet felis nisi, fringilla luctus felis hendrerit sit amet. Aenean vitae gravida diam, finibus dignissim turpis. Sed eget varius ligula, at volutpat tortor.</p>
+            <p>Integer sollicitudin, tortor a mattis commodo, velit urna rhoncus erat, vitae congue lectus dolor consequat libero. Donec leo ligula, maximus et pellentesque sed, gravida a metus. Cras ullamcorper a nunc ac porta. Aliquam ut aliquet lacus, quis faucibus libero. Quisque non semper leo.</p>
+            </div>
+        </div>                
+        <div class="tile is-6 is-vertical is-parent">
+            <div class="tile is-child box">
+            <p class="title is-4">2nd</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+            </div>
+            <div class="tile is-child box">
+            <p class="title is-4">3rd</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+            </div>
+        </div>
+    </div>
+</div>         -->
+
+// 13.07.18
+// Vertical tabs
+Vue.component('tabs', {
+    template: `
+        <div>
+            <div class="custom_tab">
+                <ul>
+                    <li v-for="tab in tabs" :class="{ 'is-active': tab.isActive }">
+                        <button :href="tab.href" @click="selectTab(tab)">{{ tab.name | capitalize }}</button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tabcontent">
+                <slot></slot>
+            </div>
+        </div>
+    `,
+
+    data() {
+        return { tabs: [] };
+    },
+
+    created() {
+        this.tabs = this.$children;
+    },
+
+    methods: {
+        selectTab(selectedTab) {
+            this.tabs.forEach(tab => {
+                tab.isActive = (tab.href == selectedTab.href);
+            });
+        }
+    }
+});
+
+
+// Vertical tab
+Vue.component('tab', {
+    template: `
+        <div v-show="isActive"><slot></slot></div>
+    `,
+
+    props: {
+        name: { required: true },
+        selected: { default: false }
+    },
+
+    data() {
+        return {
+            isActive: false
+        };
+    },
+
+    computed: {
+        href() {
+            return '#' + this.name.toLowerCase().replace(/ /g, '-');
+        }
+    },
+
+    mounted() {
+        this.isActive = this.selected;
+    },
+});
